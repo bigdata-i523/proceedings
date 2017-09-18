@@ -9,7 +9,8 @@ with open('list.txt', 'r') as content_file:
 print (content)
 
 for line in content:
-    url = line.split('"')[3]
-    os.system("git pull " + url)
+    hid = line.split('"')[3]
+    print (hid)
+    #os.system("cd ../{hid}; git pull ".format(hid=hid))
 
 
