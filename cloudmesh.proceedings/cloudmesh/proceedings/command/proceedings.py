@@ -12,9 +12,19 @@ class ProceedingsCommand(PluginCommand):
         ::
 
           Usage:
-                proceedings -f FILE
-                proceedings FILE
-                proceedings list
+                proceedings clone [git=BASE] [HIDS]
+                proceedings pull
+                proceedings commit MESSAGE
+                proceedings commit MESSAGE
+                proccedings check [HIDS]
+                proccedings create
+                proccedings delete
+                proccedings clean
+                proccedings list owners
+                proccedings list paper1
+                proccedings list paper2
+                proccedings list project
+                proceedings list HIDS
 
           This command does some useful things.
 
