@@ -1,6 +1,7 @@
 from __future__ import print_function
 from cloudmesh.shell.command import command
 from cloudmesh.shell.command import PluginCommand
+from cloudmesh.proceedings.api.proceedings import Proceedings
 
 
 class ProceedingsCommand(PluginCommand):
@@ -14,7 +15,6 @@ class ProceedingsCommand(PluginCommand):
           Usage:
                 proceedings clone [git=BASE] [HIDS]
                 proceedings pull
-                proceedings commit MESSAGE
                 proceedings commit MESSAGE
                 proccedings check [HIDS]
                 proccedings create
@@ -35,6 +35,11 @@ class ProceedingsCommand(PluginCommand):
               -f      specify the file
 
         """
+        print ("GGGG")
+        p = Proceedings()
+        c  = p.read_hid_list(filename='list.txt')
+        print (c)
+        print ("GGGG")        
         print(arguments)
 
 

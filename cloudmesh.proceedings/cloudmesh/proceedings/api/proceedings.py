@@ -7,10 +7,11 @@ import os.path
 
 class Proceedings(object):
 
-    def _read_hid_list(self, filename='list.txt'):
+    def read_hid_list(self, filename='list.txt'):
         with open(filename, 'r') as content_file:
             content = content_file.readlines()
-        
+        return content
+            
     def get_hids_from_git(self):
         """ returns the hids from git"""
         return []
@@ -23,7 +24,7 @@ class Proceedings(object):
     def clone(self):
         """ clones all hid dirs int .."""
         """returns all hids that have an issue"""
-        self._read_hid_list()
+        self.read_hid_list()
         for line in content:
             if "/hid" in line:
                 url = line.split('"')[3]
@@ -33,17 +34,17 @@ class Proceedings(object):
         """does a git pull in all hid dirs in .."""
         """returns all hid the have an issue"""
 
-        self._read_hid_list()        
+        self.read_hid_list()        
         for line in content:
             hid = line.split('"')[3]
             print (hid)
             #os.system("cd ../{hid}; git pull ".format(hid=hid))
 
         
-    def set_license(self)
+    def set_license(self):
         """put the license in each directory if it is missing"""
         """ this is not working"""
-        self._read_hid_list()                
+        self.read_hid_list()                
         for line in content:
             directory = line.split('/')[4].split(".")[0]
             if directory.startswith('hid'):
