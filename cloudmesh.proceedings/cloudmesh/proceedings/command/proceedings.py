@@ -42,16 +42,16 @@ class ProceedingsCommand(PluginCommand):
         print ("GGGG")        
         print(arguments)
         if arguments.clone:
-            print ("clone")
             hids = p.clone(filename='list.txt')
 
+        elif arguments.pull:
+            hids = p.pull(filename='list.txt')
 
         elif arguments.list and arguments.hids:
             print(p.read_hid_list(filename='list.txt'))
 
         elif arguments.clean:
-            hids = p.read_hid_list(filename='list.txt')
-            for hid in hids:
-                os.system ("rm -rf ../{hid}".format(hid=hid))
+            p.clean()
+
 
 

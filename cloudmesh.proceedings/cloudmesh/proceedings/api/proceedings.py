@@ -33,25 +33,28 @@ class Proceedings(object):
         """use cloudmesh Parameter to generate a list form abreviated list string"""
         """example hid[100-110,116,201-210,301-305]"""
         return
-    
+
+    def clean(self):
+        hids = self.read_hid_list(filename='list.txt')
+        for hid in hids:
+            os.system("rm -rf ../{hid}".format(hid=hid))
+
     def clone(self,filename='list.txt'):
         """ clones all hid dirs int .."""
         """returns all hids that have an issue"""
         hids = self.read_git_list(filename=filename)
-        for line in content:
-            if "/hid" in line:
-                url = line.split('"')[3]
-                os.system("cd ..; git clone " + url)
+        for hid in hids:
+            if "/hid" in hid:
+                os.system("cd ..; git clone " + hid)
 
-    def pull(self):
+    def pull(self, filename='list.txt'):
         """does a git pull in all hid dirs in .."""
         """returns all hid the have an issue"""
-
-        self.read_hid_list()        
-        for line in content:
-            hid = line.split('"')[3]
+        hids = self.read_hid_list(filename=filename)
+        print (hids)
+        for hid in hids:
             print (hid)
-            #os.system("cd ../{hid}; git pull ".format(hid=hid))
+            os.system("cd ../{hid}; git pull ".format(hid=hid))
 
         
     def set_license(self):
