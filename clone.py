@@ -6,10 +6,10 @@ import os
 with open('list.txt', 'r') as content_file:
     content = content_file.readlines()
 
-print (content)
+print ('\n'.join(content))
 
 for line in content:
     url = line.split('"')[3]
-    os.system("git clone " + url)
+    os.system("cd ..; git clone " + url)
 
 
