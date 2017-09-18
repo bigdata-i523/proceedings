@@ -7,24 +7,37 @@ import os.path
 
 class Proceedings(object):
 
+    def read_git_list(selfself, filename='list.txt'):
+        gits = []
+        with open(filename, 'r') as f:
+            for line in f:
+                url = line.split('"')[3]
+                gits.append(url)
+        return gits
+
+
     def read_hid_list(self, filename='list.txt'):
-        with open(filename, 'r') as content_file:
-            content = content_file.readlines()
-        return content
+        hids = []
+        gits = self.read_git_list(filename)
+        for git in gits:
+            rest, hid = git.split("/")
+            hid = hid.replace(".git","")
+            hids.append(hid)
+        return hids
             
     def get_hids_from_git(self):
         """ returns the hids from git"""
         return []
 
     def get_hids_from_list(self, parameter):
-        """use cloudmesh Parameter to ggenerate a list form abreviated list string"""
+        """use cloudmesh Parameter to generate a list form abreviated list string"""
         """example hid[100-110,116,201-210,301-305]"""
         return
     
-    def clone(self):
+    def clone(self,filename='list.txt'):
         """ clones all hid dirs int .."""
         """returns all hids that have an issue"""
-        self.read_hid_list()
+        hids = self.read_git_list(filename=filename)
         for line in content:
             if "/hid" in line:
                 url = line.split('"')[3]

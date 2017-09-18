@@ -16,15 +16,15 @@ class ProceedingsCommand(PluginCommand):
                 proceedings clone [git=BASE] [HIDS]
                 proceedings pull
                 proceedings commit MESSAGE
-                proccedings check [HIDS]
-                proccedings create
-                proccedings delete
-                proccedings clean
-                proccedings list owners
-                proccedings list paper1
-                proccedings list paper2
-                proccedings list project
-                proceedings list HIDS
+                proceedings check [HIDS]
+                proceedings create
+                proceedings delete
+                proceedings clean
+                proceedings list owners
+                proceedings list paper1
+                proceedings list paper2
+                proceedings list project
+                proceedings list hids
 
           This command does some useful things.
 
@@ -37,10 +37,21 @@ class ProceedingsCommand(PluginCommand):
         """
         print ("GGGG")
         p = Proceedings()
-        c  = p.read_hid_list(filename='list.txt')
+        c  = p.read_git_list(filename='list.txt')
         print (c)
         print ("GGGG")        
         print(arguments)
+        if arguments.clone:
+            print ("clone")
+            hids = p.clone(filename='list.txt')
 
+
+        elif arguments.list and arguments.hids:
+            print(p.read_hid_list(filename='list.txt'))
+
+        elif arguments.clean:
+            hids = p.read_hid_list(filename='list.txt')
+            for hid in hids:
+                os.system ("rm -rf ../{hid}".format(hid=hid))
 
 
