@@ -16,6 +16,7 @@ class ProceedingsCommand(PluginCommand):
           Usage:
                 proceedings clone [git=BASE] [HIDS]
                 proceedings pull
+                proceedings push
                 proceedings commit MESSAGE
                 proceedings check [HIDS]
                 proceedings create
@@ -48,6 +49,9 @@ class ProceedingsCommand(PluginCommand):
 
         elif arguments.pull:
             hids = p.pull(filename='list.txt')
+
+        elif arguments.push:
+            hids = p.push(filename='list.txt')
 
         elif arguments.list and arguments.hids:
             print(p.read_hid_list(filename='list.txt'))
