@@ -70,8 +70,9 @@ class ProceedingsCommand(PluginCommand):
                 ok, missing = p.attribute(None, arguments.ATTRIBUTE)
                 pprint (ok)
                 pprint (missing)
-                print(Printer.write(ok, order=['hid', 'name', 'url']))
-
-
+                if arguments.ATTRIBUTE == 'owner':
+                    print(Printer.write(ok, order=['hid', 'name', 'url']))
+                elif arguments.ATTRIBUTE.startswith('paper'):
+                    print(Printer.write(ok, order=['hid', 'author', 'title']))
 
 
