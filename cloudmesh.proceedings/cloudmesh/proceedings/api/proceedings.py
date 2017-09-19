@@ -4,7 +4,6 @@ import pprint
 import glob
 import os.path
 
-
 class Proceedings(object):
 
     def read_git_list(selfself, filename='list.txt'):
@@ -39,6 +38,7 @@ class Proceedings(object):
         for hid in hids:
             os.system("rm -rf ../{hid}".format(hid=hid))
 
+
     def clone(self,filename='list.txt'):
         """ clones all hid dirs int .."""
         """returns all hids that have an issue"""
@@ -56,7 +56,25 @@ class Proceedings(object):
             print (hid)
             os.system("cd ../{hid}; git pull ".format(hid=hid))
 
-        
+    def commit(self, filename='list.txt', msg="update"):
+        """does a git pull in all hid dirs in .."""
+        """returns all hid the have an issue"""
+        hids = self.read_hid_list(filename=filename)
+        print (hids)
+        for hid in hids:
+            print (hid)
+            os.system('cd ../{hid}; git commit -m "{msg}" . '.format(hid=hid, msg=msg))
+
+    def push(self, filename='list.txt'):
+        """does a git pull in all hid dirs in .."""
+        """returns all hid the have an issue"""
+        hids = self.read_hid_list(filename=filename)
+        print (hids)
+        for hid in hids:
+            print (hid)
+            os.system('cd ../{hid}; git push'.format(hid=hid))
+
+
     def set_license(self):
         """put the license in each directory if it is missing"""
         """ this is not working"""
@@ -67,6 +85,80 @@ class Proceedings(object):
                 print (directory)
                 #os.system("cp proceedings/LICENSE " + directory)
                 #os.system('cd ' + directory + ';  git commit -m "add License" LICENSE; git push')
+
+    def extract_yaml_text(self,s):
+        """
+        Takes a string and returns all lines between ``` if they start at the beginning of the line
+        :return: text between ^```
+        """
+        output = ""
+        flag = False
+        try:
+            for o in s.split("\n"):
+                if o.strip().startswith("```") and not flag:
+                    flag = True
+                    continue
+                if flag and not o.strip().startswith("```"):
+                    output = output + o + "\n"
+                if o.strip().startswith("```") and flag:
+                    flag = False
+                    continue
+        except Exception as e:
+            print (e)
+            return None
+
+        return output.strip()
+
+    def get_file(selfself, filename):
+        try:
+            with open(filename, 'r') as f:
+                content = f.read()
+        except Exception as e:
+            print(e)
+            content = None
+        return content
+
+    def readme(self, hid):
+        filename = "../{hid}/README.md".format(hid=hid)
+        if os.path.isfile(filename):
+            content = self.get_file(filename)
+            content = self.extract_yaml_text(content)
+        else:
+            content = None
+        return content
+
+
+    def attribute(self, hid, name):
+        if hid is not None:
+            s = self.readme(hid)
+            if s is None:
+                return None
+            try:
+                data = yaml.load(s)
+            except Exception as e:
+                data = None
+
+            if data is None:
+                return None
+            return data[name]
+
+        else:
+            ok = {}
+            missing = []
+            dirs = glob.glob('../hid*')
+            for dir in dirs:
+                hid = dir.replace("../","")
+                print (hid)
+                filename = dir + '/README.md'
+                if os.path.isfile(filename):
+                    data = self.attribute(hid, name)
+                    print (data)
+                    if data is None:
+                         missing.append("{hid}, owner data is missing in README.md".format(hid=hid))
+                    else:
+                        ok[hid] = data
+            return ok, missing
+
 
     def owner(self):
         """this is not yet tested"""
@@ -89,7 +181,7 @@ class Proceedings(object):
 
             # print (yaml_text)
 
-            body = yaml.load(yaml_text)
+
             return body
 
             # print(body)
@@ -109,12 +201,14 @@ class Proceedings(object):
         for dir in dirs:
             hid = dir.replace("../","")
             readme = dir + '/README.md'
+
             if os.path.isfile(readme):
                 data = get_data(readme)
+                print ("dd", data)
                 if data is None:
                      missing.append("{hid}, owner data is missing in README.md".format(hid=hid))
                 else:
-                    ok.append("{hid}, {owner}".format(hid=hid, owner=data['owner']['name']))
+                    ok.append(data['owner'])
 
         print ("Owner Data Found")            
         print ("\n".join(ok))
