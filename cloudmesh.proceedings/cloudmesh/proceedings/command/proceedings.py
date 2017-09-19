@@ -63,9 +63,8 @@ class ProceedingsCommand(PluginCommand):
             hid = arguments.HID
             if hid is not None:
                 # print(p.readme(hid))
-                print("Owner Data Found")
-                ok, missing = p.attribute(hid, arguments.ATTRIBUTE)
-                print("\n".join(ok))
+                ok= p.attribute(hid, arguments.ATTRIBUTE)
+                print (ok)
                 print()
                 # print ("Owner Data Missing")
                 # print ("\n".join(missing))
