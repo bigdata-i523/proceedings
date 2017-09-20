@@ -12,8 +12,8 @@ print ("""
 \section{List of Papers}
 
 \\begin{footnotesize}
-\\begin{longtable}{|p{1cm}p{5cm}p{9cm}p{1cm}|}
-\\hline \\textbf{Name} & \\textbf{HID} & \\textbf{Title} & \\textbf{Pages}\\\\ \\hline \\hline
+\\begin{longtable}{|p{1cm}p{5cm}p{9cm}|}
+\\hline \\textbf{Name} & \\textbf{HID} & \\textbf{Title} \\\\ \\hline \\hline
 """)
 
 p = Proceedings()
@@ -22,16 +22,14 @@ hids = p.read_hid_list()
 
 for hid in hids:
     # print(hid)
-    pages = 1
     owner = p.attribute(hid, 'owner')
     paper = p.attribute(hid, 'paper1')
     d = {
         "name": owner["name"] or None,
         "hid": hid,
         "title": paper["title"] or None,
-        "pages": 1
         }
-    print ("{hid} & {name} & {title} & {pages} \\\\".format(**d))
+    print ("{hid} & {name} & {title}  \\\\".format(**d))
     print ("\\hline")
 
 print("""\\end{longtable}
@@ -45,7 +43,7 @@ for hid in hids:
     owner = p.attribute(hid, 'owner')
     paper = p.attribute(hid, 'paper1')
     d = {
-        "author": paper["author"] or None,
+        "author": ', '.join(paper["author"]) or None,
         "hid": hid,
         "title": paper["title"] or None,
         "pages": 1,
