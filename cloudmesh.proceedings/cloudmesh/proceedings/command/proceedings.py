@@ -4,6 +4,7 @@ from cloudmesh.shell.command import PluginCommand
 from cloudmesh.proceedings.api.proceedings import Proceedings
 from pprint import pprint
 from cloudmesh.common.Printer import Printer
+import os
 
 class ProceedingsCommand(PluginCommand):
 
@@ -84,7 +85,18 @@ class ProceedingsCommand(PluginCommand):
             hid = arguments.HID
             kind = arguments.KIND
 
-            p.execute(hid, "make", base=kind, kind=kind)
+
+            if hid.lower() == "all":
+
+                dirs = p.read_hid_list(filename='list.txt')
+
+                for directory in dirs:
+                    if os.path.exists("../{directory}".format(directory=directory)) and \
+                       os.path.exists("../{directory}/{kind}/{kind}.tex".format(kind=kind,directory=directory)):
+                        p.execute(directory, "make", base=kind, kind=kind)
+
+            else:
+                p.execute(hid, "make", base=kind, kind=kind)
 
         elif arguments.pdf and arguments.view:
 
@@ -98,7 +110,16 @@ class ProceedingsCommand(PluginCommand):
             hid = arguments.HID
             kind = arguments.KIND
 
-            p.execute(hid, "make clean", base=kind, kind=kind)
+            if hid.lower() == "all":
+
+                dirs = p.read_hid_list(filename='list.txt')
+
+                for directory in dirs:
+                    if os.path.isfile("../{directory}".format(directory=directory)):
+                        p.execute(directory, "make clean", base=kind, kind=kind)
+
+            else:
+                p.execute(hid, "make clean", base=kind, kind=kind)
 
         elif arguments.pdf and arguments.ls:
 
