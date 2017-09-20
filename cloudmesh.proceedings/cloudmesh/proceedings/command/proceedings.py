@@ -23,6 +23,11 @@ class ProceedingsCommand(PluginCommand):
                 proceedings delete
                 proceedings clean
                 proceedings list ATTRIBUTE [HID]
+                proceedings pdf HID KIND make
+                proceedings pdf HID KIND view
+                proceedings pdf HID KIND clean
+                proceedings pdf HID KIND ls
+                proceedings pdf HID KIND cat FILE
 
           This command does some useful things.
 
@@ -33,12 +38,11 @@ class ProceedingsCommand(PluginCommand):
               -f      specify the file
 
         """
-        # print ("GGGG")
+        # pprint(arguments)
+
         p = Proceedings()
         c  = p.read_git_list(filename='list.txt')
-        # print (c)
-        # print ("GGGG")
-        pprint(arguments)
+
         if arguments.clone:
             hids = p.clone(filename='list.txt')
 
@@ -55,9 +59,6 @@ class ProceedingsCommand(PluginCommand):
 
         elif arguments.list and arguments.hids:
             print(p.read_hid_list(filename='list.txt'))
-
-        elif arguments.clean:
-            p.clean()
 
         elif arguments.list and arguments.ATTRIBUTE:
             hid = arguments.HID
@@ -78,4 +79,43 @@ class ProceedingsCommand(PluginCommand):
                 elif arguments.ATTRIBUTE.startswith('paper'):
                     print(Printer.write(ok, order=['hid', 'author', 'title']))
 
+        elif arguments.pdf and arguments.make:
+
+            hid = arguments.HID
+            kind = arguments.KIND
+
+            p.execute(hid, "make", base=kind, kind=kind)
+
+        elif arguments.pdf and arguments.view:
+
+            hid = arguments.HID
+            kind = arguments.KIND
+
+            p.execute(hid, "make view", base=kind, kind=kind)
+
+        elif arguments.pdf and arguments.clean:
+
+            hid = arguments.HID
+            kind = arguments.KIND
+
+            p.execute(hid, "make clean", base=kind, kind=kind)
+
+        elif arguments.pdf and arguments.ls:
+
+            hid = arguments.HID
+            kind = arguments.KIND
+
+            p.execute(hid, "ls", base=kind, kind=kind)
+
+        elif arguments.pdf and arguments.cat:
+
+            hid = arguments.HID
+            kind = arguments.KIND
+            file = arguments.FILE
+
+            p.execute(hid, "cat {file}".format(file=file), base=kind, kind=kind)
+
+
+        elif arguments.clean:
+            p.clean()
 

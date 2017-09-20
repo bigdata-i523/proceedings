@@ -1,12 +1,39 @@
+from __future__ import print_function
 import os
 import yaml
-import pprint
 import glob
 import os.path
+import glob
+import yaml
+from pprint import pprint
+import sys
+import re
+from cloudmesh.common.util import banner
 
 class Proceedings(object):
 
-    def read_git_list(selfself, filename='list.txt'):
+    def execute(self, hid, command, base='paper1', kind='paper1'):
+        banner(hid + ": " + command)
+        commandline = "cd ../{hid}/{kind}; {command}".format(command=command, hid=hid, base=base, kind=kind)
+        try:
+            os.system(commandline)
+        except Exception as e:
+            print (e)
+            print ("ERROR: can not", command, hid)
+
+
+
+    def generate_pdf(self, hid, base='paper1', kind='paper1'):
+        self.execute("make", hid, base=base, kind=kind)
+
+
+    def view_pdf(self, hid, base='paper1', kind='paper1'):
+        self.execute("make view", hid, base=base, kind=kind)
+
+    def clean_pdf(self, hid, base='paper1', kind='paper1'):
+        self.execute("make clean", hid, base=base, kind=kind)
+
+    def read_git_list(fself, filename='list.txt'):
         gits = []
         with open(filename, 'r') as f:
             for line in f:
@@ -131,11 +158,13 @@ class Proceedings(object):
     def attribute(self, hid, name):
         if hid is not None:
             s = self.readme(hid)
+            # print (s)
             if s is None:
                 return None
             try:
                 data = yaml.load(s)
             except Exception as e:
+                print (e)
                 data = None
 
             if data is None:
