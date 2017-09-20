@@ -1,0 +1,381 @@
+\documentclass[12pt]{article}
+\usepackage{fullpage}
+\usepackage[final]{pdfpages}
+\usepackage{hyperref}
+\usepackage{tocloft}
+\renewcommand\cftsecafterpnum{\vskip0pt}
+\renewcommand\cftsubsecafterpnum{\vskip0pt}
+
+% Adjust sectional unit title fonts in ToC
+\renewcommand{\cftsecfont}{\sffamily}
+\renewcommand{\cftsubsecfont}{\sffamily}
+
+\usepackage{amsmath}
+\usepackage{tikz}
+\usepackage{epigraph}
+\usepackage{longtable}
+
+\renewcommand\epigraphflush{flushright}
+\renewcommand\epigraphsize{\normalsize}
+\setlength\epigraphwidth{0.7\textwidth}
+
+\definecolor{titlepagecolor}{cmyk}{1,.60,0,.40}
+
+\DeclareFixedFont{\titlefont}{T1}{ppl}{b}{it}{0.5in}
+
+\makeatletter                       
+\def\printauthor{%                  
+    {\large \@author}}              
+\makeatother
+\author{%
+    Editor: \\
+    Gregor von Laszewski\\
+    Department of Intelligent Systems Engeneering\\
+    Indiana University \\
+    \texttt{laszewski@gmail.com}\vspace{20pt} \\   
+    }
+
+% The following code is borrowed from: http://tex.stackexchange.com/a/86310/10898
+
+\newcommand\titlepagedecoration{%
+\begin{tikzpicture}[remember picture,overlay,shorten >= -10pt]
+
+\coordinate (aux1) at ([yshift=-15pt]current page.north east);
+\coordinate (aux2) at ([yshift=-410pt]current page.north east);
+\coordinate (aux3) at ([xshift=-4.5cm]current page.north east);
+\coordinate (aux4) at ([yshift=-150pt]current page.north east);
+
+\begin{scope}[titlepagecolor!40,line width=12pt,rounded corners=12pt]
+\draw
+  (aux1) -- coordinate (a)
+  ++(225:5) --
+  ++(-45:5.1) coordinate (b);
+\draw[shorten <= -10pt]
+  (aux3) --
+  (a) --
+  (aux1);
+\draw[opacity=0.6,titlepagecolor,shorten <= -10pt]
+  (b) --
+  ++(225:2.2) --
+  ++(-45:2.2);
+\end{scope}
+\draw[titlepagecolor,line width=8pt,rounded corners=8pt,shorten <= -10pt]
+  (aux4) --
+  ++(225:0.8) --
+  ++(-45:0.8);
+\begin{scope}[titlepagecolor!70,line width=6pt,rounded corners=8pt]
+\draw[shorten <= -10pt]
+  (aux2) --
+  ++(225:3) coordinate[pos=0.45] (c) --
+  ++(-45:3.1);
+\draw
+  (aux2) --
+  (c) --
+  ++(135:2.5) --
+  ++(45:2.5) --
+  ++(-45:2.5) coordinate[pos=0.3] (d);   
+\draw 
+  (d) -- +(45:1);
+\end{scope}
+\end{tikzpicture}%
+}
+
+
+\textheight=23.5cm
+
+\begin{document}
+%\title{Big Data Technologies}
+
+%\author{Editor: Gregor von Laszewski}
+
+
+\begin{titlepage}
+
+\noindent
+\titlefont Projects in Big Data \\ Software and Applications\par
+\epigraph{Spring 2017}%
+{\textit{Bloomington, Indiana}}
+\null\vfill
+\vspace*{1cm}
+\noindent
+\hfill
+\begin{minipage}{0.50\linewidth}
+    \begin{flushright}
+        \printauthor
+    \end{flushright}
+\end{minipage}
+%
+\begin{minipage}{0.02\linewidth}
+    \rule{1pt}{125pt}
+\end{minipage}
+\titlepagedecoration
+\end{titlepage}
+
+
+
+%\maketitle
+
+\newpage
+\tableofcontents
+\newpage
+
+\section{List of Papers}
+
+\begin{footnotesize}
+\begin{longtable}{|p{1cm}p{5cm}p{9cm}p{1cm}|}
+\hline \textbf{Name} & \textbf{HID} & \textbf{Title} & \textbf{Pages}\\ \hline \hline
+
+hid102 & Dianprakasa, Arif & This is my paper about xyz & 1 \\
+\hline
+hid104 & Jones, Gabriel & What Separates "Big Data" from "Lots of Data"? & 1 \\
+\hline
+hid105 & Lipe-Melton, Josh & This is my paper about data visualization in sports & 1 \\
+\hline
+hid106 & Qiaoyi Liu & This is my paper about xyz & 1 \\
+\hline
+hid107 & Ni,Juan & This is my paper about xyz & 1 \\
+\hline
+hid109 & Shiqi Shen & This is my paper about xyz & 1 \\
+\hline
+hid110 & Hsiao Yuan Wang & This is my paper about xyz & 1 \\
+\hline
+hid201 & Arnav, Arnav & Big Data analytics and Edge Compting & 1 \\
+\hline
+hid202 & Himani Bhatt & Big data analytics in Weather forecasting & 1 \\
+\hline
+hid203 & None & This is my paper about xyz & 1 \\
+\hline
+hid204 & Chaturvedi, Dhawal & Big Data Anaytics and High Performance Computing & 1 \\
+\hline
+hid205 & Chaudhary Mrunal Lalitmohan & Applications pof Big Data in Fraud Detection in Insurance & 1 \\
+\hline
+hid209 & Han, Wenxuan & Big Data Application in Web Search and Text Mining & 1 \\
+\hline
+hid210 & Hotz, Nicholas & This is my paper about xyz & 1 \\
+\hline
+hid211 & Ajinkya Khamkar & Distributed environment for neural network & 1 \\
+\hline
+hid212 & Kumar, Saurabh & Big Data Analysis using MapReduce & 1 \\
+\hline
+hid213 & Liu, Yuchen & This is my paper about xyz & 1 \\
+\hline
+hid214 & Lu, Junjie & This is my paper about xyz & 1 \\
+\hline
+hid215 & Mallala, Bharat & Big Data and Artificial Neural Networks & 1 \\
+\hline
+hid216 & Millard, Mathew & Big Data Analytics in Sports - Track and Field & 1 \\
+\hline
+hid218 & Niu, Geng & Big data's influence on e-commerce and lifestyle & 1 \\
+\hline
+hid219 & Parampali Sreenath, Syam Sundar Herle & This is my paper about xyz & 1 \\
+\hline
+hid224 & Rawat, Neha & Big Data Applications in the Hospitality Sector & 1 \\
+\hline
+hid225 & Schwartzer, Matthew & Big Data Applications in the Transportation Industry & 1 \\
+\hline
+hid228 & Swargam, Prashanth & Big data applications in Electric Power Distribution & 1 \\
+\hline
+hid231 & Vegi, Karthik & Using Big Data for Fact Checking & 1 \\
+\hline
+hid232 & Gregor von Laszewski & This is my paper about xyz & 1 \\
+\hline
+hid233 & Wang, Jiaan (Jervis) & Big Data Applications in Entertainment Industry & 1 \\
+\hline
+hid234 & Wang, Weixuan & Big Data Analytics in Tourism Industry & 1 \\
+\hline
+hid101 & Huiyi Chen & This is my paper about xyz & 1 \\
+\hline
+hid235 & Wu, Yujie & Big Data in Recommendation System & 1 \\
+\hline
+hid236 & Yang Weipeng & This is my paper about xyz & 1 \\
+\hline
+hid237 & Ahmed, Tousif & This is my paper about xyz & 1 \\
+\hline
+hid302 & Sushant Athaley & Big Data Application in Restaurant Industry & 1 \\
+\hline
+hid303 & Brunetti Nademlynsky, Lisa & This is my paper about xyz & 1 \\
+\hline
+hid304 & Carmickle, Ricky & This is my paper about xyz & 1 \\
+\hline
+hid305 & Andres Castro Benavides & Big Data Analytics for Municipal Waste Management. & 1 \\
+\hline
+hid306 & Cheruvu, Murali & This is my paper about xyz & 1 \\
+\hline
+hid308 & Pravin Deshmukh & This is my paper about xyz & 1 \\
+\hline
+hid309 & Dubey, Lokesh & This is my paper about xyz & 1 \\
+\hline
+hid310 & Kevin Duffy & Big Data Applications in Food Insecurity & 1 \\
+\hline
+hid311 & Durbin, Matthew & This is my paper about xyz & 1 \\
+\hline
+hid312 & Eliason, Neil & This is my paper about xyz & 1 \\
+\hline
+hid313 & Tiffany Fabianac & Big Data Platforms as a Service & 1 \\
+\hline
+hid314 & Fadnavis, Sarang & This is my paper about xyz & 1 \\
+\hline
+hid315 & Garner, Jeffry & This is my paper about xyz & 1 \\
+\hline
+hid316 & Robert Gasiewicz & Big Data Analytics in Biometric Identity Management & 1 \\
+\hline
+hid318 & Irey, Ryan & This is my paper about xyz & 1 \\
+\hline
+hid319 & Mani Kumar Kagita & Big Data Analytics for Municipal Waste Management & 1 \\
+\hline
+hid320 & Elena Kirzhner & Big Data Analytics and Applications in Childbirth & 1 \\
+\hline
+hid321 & Knapp, William & This is my paper about xyz & 1 \\
+\hline
+hid322 & Koslik, Kent & This is my paper about xyz & 1 \\
+\hline
+hid323 & Uma M Kugan & This is my paper about NoSQL Databases in support of Big Data Applications and Analytics & 1 \\
+\hline
+hid324 & kuppuraj, ashok & This is my paper about xyz & 1 \\
+\hline
+hid325 & Gregor von Laszewski & This is my paper about xyz & 1 \\
+\hline
+hid326 & Mahendrakar, Mohan & This is my paper about xyz & 1 \\
+\hline
+hid327 & Marks, Paul & This is my paper about xyz & 1 \\
+\hline
+hid328 & Dhanya Mathew & Big data analysis in Finance Sector & 1 \\
+\hline
+hid329 & Ashley Miller & Big Data Analytics in Higher Education Marketing & 1 \\
+\hline
+hid330 & Janaki Mudvari Khatiwada & Big Data Applications in Improving Patient Care & 1 \\
+\hline
+hid331 & Tyler Peterson & Big Data Applications In Population Health Management & 1 \\
+\hline
+hid332 & Judy Phillips & Big Data Analytics in Agriculture & 1 \\
+\hline
+hid333 & Anil Ravi & Big Data and Artificial Intelligence solutions for In Home, Community and Territory Security & 1 \\
+\hline
+hid334 & Peter Russell & AWS in support of Big Data Applications and Analytics & 1 \\
+\hline
+hid335 & Sean Shiverick & Big Data Analytics, Data Mining, Health Informatice & 1 \\
+\hline
+hid336 & Jordan Simmons & Big Data Analytics for the Preditions Customer Needs & 1 \\
+\hline
+hid337 & Ashok Reddy Singam & Big Data and Artificial Intelligence solutions for In Home, Community and Territory Security & 1 \\
+\hline
+hid338 & Sriramulu, Anand & This is my paper about xyz & 1 \\
+\hline
+hid339 & Hady Sylla & This is my paper about xyz & 1 \\
+\hline
+hid340 & Tim Thompson & Big data analytics for research libraries & 1 \\
+\hline
+hid343 & Usifo, Borga & This is my paper about xyz & 1 \\
+\hline
+hid344 & Watts, Bradley & This is my paper about xyz & 1 \\
+\hline
+hid347 & Jeramy Townsley & Sociological Applications of Big Data & 1 \\
+\hline
+hid345 & Wood, Ross & Big data analytics in Weather forecasting. & 1 \\
+\hline
+hid346 & Zachary Meier & Big Data in Oceanography & 1 \\
+\hline
+hid301 & Arora, Gagan & This is my paper about xyz & 1 \\
+\hline
+hid208 & Devineni, Jyothi Pranavi & This is my paper about xyz & 1 \\
+\hline
+hid229 & ZhiCheng Zhu & Big Data and Machine Learning & 1 \\
+\hline
+hid230 & YuanMing Huang & This is my paper about ... & 1 \\
+\hline
+hid238 & Jeff LaDow & This is my paper about xyz & 1 \\
+\hline
+hid111 & Lewis, Derek & Big Data Analytics in Biometric Identity Management & 1 \\
+\hline
+hid342 & Udoyen, Nsikan & This is my paper about xyz & 1 \\
+\hline
+\end{longtable}
+\end{footnotesize}
+\newpage
+
+% /Users/grey/github/bigdata-i523/hid102/paper1/report.pdf  not found
+/Users/grey/github/bigdata-i523/hid104/paper1/report.pdf
+\addtocounter{section}{1}
+\addcontentsline{toc}{section}{\arabic{section}  hid104\newline What Separates "Big Data" from "Lots of Data"? \newline ['Jones, Gabriel'] }
+\includepdf[pages=-,pagecommand=\thispagestyle{plain}]{/Users/grey/github/bigdata-i523/hid104/paper1/report.pdf}
+% /Users/grey/github/bigdata-i523/hid105/paper1/report.pdf  not found
+% /Users/grey/github/bigdata-i523/hid106/paper1/report.pdf  not found
+% /Users/grey/github/bigdata-i523/hid107/paper1/report.pdf  not found
+% /Users/grey/github/bigdata-i523/hid109/paper1/report.pdf  not found
+% /Users/grey/github/bigdata-i523/hid110/paper1/report.pdf  not found
+% /Users/grey/github/bigdata-i523/hid201/paper1/report.pdf  not found
+% /Users/grey/github/bigdata-i523/hid202/paper1/report.pdf  not found
+% /Users/grey/github/bigdata-i523/hid203/paper1/report.pdf  not found
+% /Users/grey/github/bigdata-i523/hid204/paper1/report.pdf  not found
+% /Users/grey/github/bigdata-i523/hid205/paper1/report.pdf  not found
+% /Users/grey/github/bigdata-i523/hid209/paper1/report.pdf  not found
+% /Users/grey/github/bigdata-i523/hid210/paper1/report.pdf  not found
+% /Users/grey/github/bigdata-i523/hid211/paper1/report.pdf  not found
+% /Users/grey/github/bigdata-i523/hid212/paper1/report.pdf  not found
+% /Users/grey/github/bigdata-i523/hid213/paper1/report.pdf  not found
+% /Users/grey/github/bigdata-i523/hid214/paper1/report.pdf  not found
+% /Users/grey/github/bigdata-i523/hid215/paper1/report.pdf  not found
+% /Users/grey/github/bigdata-i523/hid216/paper1/report.pdf  not found
+% /Users/grey/github/bigdata-i523/hid218/paper1/report.pdf  not found
+% /Users/grey/github/bigdata-i523/hid219/paper1/report.pdf  not found
+% /Users/grey/github/bigdata-i523/hid224/paper1/report.pdf  not found
+% /Users/grey/github/bigdata-i523/hid225/paper1/report.pdf  not found
+% /Users/grey/github/bigdata-i523/hid228/paper1/report.pdf  not found
+% /Users/grey/github/bigdata-i523/hid231/paper1/report.pdf  not found
+% /Users/grey/github/bigdata-i523/hid232/paper1/report.pdf  not found
+% /Users/grey/github/bigdata-i523/hid233/paper1/report.pdf  not found
+% /Users/grey/github/bigdata-i523/hid234/paper1/report.pdf  not found
+% /Users/grey/github/bigdata-i523/hid101/paper1/report.pdf  not found
+% /Users/grey/github/bigdata-i523/hid235/paper1/report.pdf  not found
+% /Users/grey/github/bigdata-i523/hid236/paper1/report.pdf  not found
+% /Users/grey/github/bigdata-i523/hid237/paper1/report.pdf  not found
+% /Users/grey/github/bigdata-i523/hid302/paper1/report.pdf  not found
+% /Users/grey/github/bigdata-i523/hid303/paper1/report.pdf  not found
+% /Users/grey/github/bigdata-i523/hid304/paper1/report.pdf  not found
+% /Users/grey/github/bigdata-i523/hid305/paper1/report.pdf  not found
+% /Users/grey/github/bigdata-i523/hid306/paper1/report.pdf  not found
+% /Users/grey/github/bigdata-i523/hid308/paper1/report.pdf  not found
+% /Users/grey/github/bigdata-i523/hid309/paper1/report.pdf  not found
+% /Users/grey/github/bigdata-i523/hid310/paper1/report.pdf  not found
+% /Users/grey/github/bigdata-i523/hid311/paper1/report.pdf  not found
+% /Users/grey/github/bigdata-i523/hid312/paper1/report.pdf  not found
+% /Users/grey/github/bigdata-i523/hid313/paper1/report.pdf  not found
+% /Users/grey/github/bigdata-i523/hid314/paper1/report.pdf  not found
+% /Users/grey/github/bigdata-i523/hid315/paper1/report.pdf  not found
+% /Users/grey/github/bigdata-i523/hid316/paper1/report.pdf  not found
+% /Users/grey/github/bigdata-i523/hid318/paper1/report.pdf  not found
+% /Users/grey/github/bigdata-i523/hid319/paper1/report.pdf  not found
+% /Users/grey/github/bigdata-i523/hid320/paper1/report.pdf  not found
+% /Users/grey/github/bigdata-i523/hid321/paper1/report.pdf  not found
+% /Users/grey/github/bigdata-i523/hid322/paper1/report.pdf  not found
+% /Users/grey/github/bigdata-i523/hid323/paper1/report.pdf  not found
+% /Users/grey/github/bigdata-i523/hid324/paper1/report.pdf  not found
+% /Users/grey/github/bigdata-i523/hid325/paper1/report.pdf  not found
+% /Users/grey/github/bigdata-i523/hid326/paper1/report.pdf  not found
+% /Users/grey/github/bigdata-i523/hid327/paper1/report.pdf  not found
+% /Users/grey/github/bigdata-i523/hid328/paper1/report.pdf  not found
+% /Users/grey/github/bigdata-i523/hid329/paper1/report.pdf  not found
+% /Users/grey/github/bigdata-i523/hid330/paper1/report.pdf  not found
+% /Users/grey/github/bigdata-i523/hid331/paper1/report.pdf  not found
+% /Users/grey/github/bigdata-i523/hid332/paper1/report.pdf  not found
+% /Users/grey/github/bigdata-i523/hid333/paper1/report.pdf  not found
+% /Users/grey/github/bigdata-i523/hid334/paper1/report.pdf  not found
+% /Users/grey/github/bigdata-i523/hid335/paper1/report.pdf  not found
+% /Users/grey/github/bigdata-i523/hid336/paper1/report.pdf  not found
+% /Users/grey/github/bigdata-i523/hid337/paper1/report.pdf  not found
+% /Users/grey/github/bigdata-i523/hid338/paper1/report.pdf  not found
+% /Users/grey/github/bigdata-i523/hid339/paper1/report.pdf  not found
+% /Users/grey/github/bigdata-i523/hid340/paper1/report.pdf  not found
+% /Users/grey/github/bigdata-i523/hid343/paper1/report.pdf  not found
+% /Users/grey/github/bigdata-i523/hid344/paper1/report.pdf  not found
+% /Users/grey/github/bigdata-i523/hid347/paper1/report.pdf  not found
+% /Users/grey/github/bigdata-i523/hid345/paper1/report.pdf  not found
+% /Users/grey/github/bigdata-i523/hid346/paper1/report.pdf  not found
+% /Users/grey/github/bigdata-i523/hid301/paper1/report.pdf  not found
+% /Users/grey/github/bigdata-i523/hid208/paper1/report.pdf  not found
+% /Users/grey/github/bigdata-i523/hid229/paper1/report.pdf  not found
+% /Users/grey/github/bigdata-i523/hid230/paper1/report.pdf  not found
+% /Users/grey/github/bigdata-i523/hid238/paper1/report.pdf  not found
+% /Users/grey/github/bigdata-i523/hid111/paper1/report.pdf  not found
+% /Users/grey/github/bigdata-i523/hid342/paper1/report.pdf  not found
+\end{document}
