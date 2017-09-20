@@ -91,8 +91,8 @@ class ProceedingsCommand(PluginCommand):
                 dirs = p.read_hid_list(filename='list.txt')
 
                 for directory in dirs:
-                    if os.path.exists("../{directory}".format(directory=directory)) and \
-                       os.path.exists("../{directory}/{kind}/{kind}.tex".format(kind=kind,directory=directory)):
+                    if os.path.exists("{home}/{directory}".format(home=p.home,directory=directory)) and \
+                       os.path.exists("{home}/{directory}/{kind}/{kind}.tex".format(home=p.home,kind=kind,directory=directory)):
                         p.execute(directory, "make", base=kind, kind=kind)
 
             else:
@@ -115,7 +115,7 @@ class ProceedingsCommand(PluginCommand):
                 dirs = p.read_hid_list(filename='list.txt')
 
                 for directory in dirs:
-                    if os.path.isfile("../{directory}".format(directory=directory)):
+                    if os.path.isfile("{home}/{directory}".format(home=p.home, directory=directory)):
                         p.execute(directory, "make clean", base=kind, kind=kind)
 
             else:
