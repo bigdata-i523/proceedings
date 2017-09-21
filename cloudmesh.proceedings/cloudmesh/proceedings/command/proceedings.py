@@ -98,8 +98,10 @@ class ProceedingsCommand(PluginCommand):
                 dirs = p.read_hid_list(filename='list.txt')
 
                 for directory in dirs:
+                    # print(directory)
                     if os.path.exists("{home}/{directory}".format(home=p.home,directory=directory)) and \
-                       os.path.exists("{home}/{directory}/{kind}/{kind}.tex".format(home=p.home,kind=kind,directory=directory)):
+                       os.path.exists("{home}/{directory}/{kind}/report.tex".format(home=p.home,kind=kind,directory=directory)):
+                        # print ("compile")
                         p.execute(directory, "make", base=kind, kind=kind)
 
             else:

@@ -32,7 +32,6 @@ class ProceedingsGit(object):
                 content.append(line)
         content.sort()
         t = '\n'.join(content)
-        # | fgrep ssh_url > list.txt
 
         text_file = open(output, "w")
         text_file.write(t)

@@ -19,6 +19,7 @@ print ("""
 p = Proceedings()
 hids = p.read_hid_list()
 
+# print (hids)
 
 for hid in hids:
     # print(hid)
