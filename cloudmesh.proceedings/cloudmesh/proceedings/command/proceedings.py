@@ -1,7 +1,7 @@
 from __future__ import print_function
 from cloudmesh.shell.command import command
 from cloudmesh.shell.command import PluginCommand
-from cloudmesh.proceedings.api.proceedings import Proceedings
+from cloudmesh.proceedings.api.proceedings import Proceedings, ProceedingsGit
 from pprint import pprint
 from cloudmesh.common.Printer import Printer
 import os
@@ -29,6 +29,7 @@ class ProceedingsCommand(PluginCommand):
                 proceedings pdf HID KIND clean
                 proceedings pdf HID KIND ls
                 proceedings pdf HID KIND cat FILE
+                proceedings git list
 
           This command does some useful things.
 
@@ -40,6 +41,12 @@ class ProceedingsCommand(PluginCommand):
 
         """
         # pprint(arguments)
+
+        if arguments.git and arguments.list:
+
+            p = ProceedingsGit()
+            p.list()
+            return
 
         p = Proceedings()
         c  = p.read_git_list(filename='list.txt')

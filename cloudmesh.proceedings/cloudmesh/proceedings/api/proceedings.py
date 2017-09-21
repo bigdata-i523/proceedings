@@ -12,9 +12,37 @@ from cloudmesh.common.util import banner
 from cloudmesh.common.util import path_expand
 
 
+class ProceedingsGit(object):
+
+    def list(self, output="list.txt"):
+        """
+        curl https://api.github.com/orgs/bigdata-i523/repos?per_page=200 | fgrep ssh_url > list.txt
+        :return:
+        """
+        filename = "tmp.txt"
+        os.system(
+            "curl https://api.github.com/orgs/bigdata-i523/repos?per_page=200 -o {filename}".format(filename=filename))
+        with open(filename, 'r') as f:
+            content = f.read()
+        lines = content.split('\n')
+        content = []
+
+        for line in lines:
+            if ("ssh_url" in line and "/hid" in line):
+                content.append(line)
+        content.sort()
+        t = '\n'.join(content)
+        # | fgrep ssh_url > list.txt
+
+        text_file = open(output, "w")
+        text_file.write(t)
+        text_file.close()
+
+
 class Proceedings(object):
     def __init__(self, directory="~/github/bigdata-i523"):
         self.set_home(directory)
+
 
     def set_home(self, directory):
         self.home = path_expand(directory)
