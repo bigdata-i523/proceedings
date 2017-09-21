@@ -54,7 +54,8 @@ for hid in hids:
     pdf = "{home}/{hid}/{paper}/report.pdf".format(paper="paper1", home=d["home"], hid=hid)
     #print (pdf)
     if os.path.exists(pdf):
-        print (pdf)
+        #print (pdf)
+        print("\\phantomsection")
 
         print("\\addtocounter{section}{1}")
         print("\\addcontentsline{toc}{section}{\\arabic{section} ",
