@@ -1,5 +1,6 @@
 from cloudmesh.proceedings.api.proceedings import Proceedings
 import os
+import sys
 
 def read_file(filename):
     with open(filename) as f:
@@ -22,7 +23,7 @@ hids = p.read_hid_list()
 # print (hids)
 
 for hid in hids:
-    # print(hid)
+    print(hid, file=sys.stderr)
     owner = p.attribute(hid, 'owner')
     paper = p.attribute(hid, 'paper1')
     d = {
@@ -30,6 +31,7 @@ for hid in hids:
         "hid": hid,
         "title": paper["title"] or None,
         }
+    print(d, file=sys.stderr)        
     print ("{hid} & {name} & {title}  \\\\".format(**d))
     print ("\\hline")
 

@@ -26,3 +26,7 @@ review:
 
 clean:
 	rm *.toc *.aux *.log *.out
+
+publish:
+	cp proceedings.pdf  ~/github/laszewsk/laszewski.github.io/papers/vonLaszewski-i523.pdf
+	cd ~/github/laszewsk/laszewski.github.io/papers ; git commit -m "update vonLaszewski-i523.pdf"; git push
