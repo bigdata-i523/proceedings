@@ -73,19 +73,19 @@ class ProceedingsCommand(PluginCommand):
             if hid is not None:
                 # print(p.readme(hid))
                 ok= p.attribute(hid, arguments.ATTRIBUTE)
-                print (ok)
-                print()
+                #print (ok)
+                #print()
                 # print ("Owner Data Missing")
                 # print ("\n".join(missing))
             else:
 
                 ok, missing = p.attribute(None, arguments.ATTRIBUTE)
-                pprint (ok)
-                pprint (missing)
+                #pprint (ok)
+                #pprint (missing)
                 if arguments.ATTRIBUTE == 'owner':
                     print(Printer.write(ok, order=['hid', 'name', 'url']))
                 elif arguments.ATTRIBUTE.startswith('paper'):
-                    print(Printer.write(ok, order=['hid', 'author', 'title']))
+                    print(Printer.write(ok, order=['dir', 'hid', 'author', 'title']))
 
         elif arguments.pdf and arguments.make:
 

@@ -111,7 +111,7 @@ class Proceedings(object):
         """does a git pull in all hid dirs in .."""
         """returns all hid the have an issue"""
         hids = self.read_hid_list(filename=filename)
-        print(hids)
+        # print(hids)
         for hid in hids:
             print(hid)
             os.system("cd {home}/{hid}; git pull ".format(hid=hid, home=self.home))
@@ -120,7 +120,7 @@ class Proceedings(object):
         """does a git pull in all hid dirs in .."""
         """returns all hid the have an issue"""
         hids = self.read_hid_list(filename=filename)
-        print(hids)
+        # print(hids)
         for hid in hids:
             print(hid)
             os.system('cd {home}/{hid}; git commit -m "{msg}" . '.format(hid=hid, msg=msg, home=self.home))
@@ -208,11 +208,12 @@ class Proceedings(object):
             dirs = glob.glob('{home}/hid*'.format(home=self.home))
             for directory in dirs:
                 hid = directory.replace("{home}/".format(home=self.home), "")
-                print(hid)
+                # print(hid)
                 filename = directory + '/README.md'
                 if os.path.isfile(filename):
                     data = self.attribute(hid, name)
-                    print(data)
+                    data['dir'] = hid
+                    #print(data)
                     if data is None:
                         missing.append("{hid}, owner data is missing in README.md".format(hid=hid))
                     else:
