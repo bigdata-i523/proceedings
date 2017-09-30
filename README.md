@@ -24,13 +24,13 @@ and can be done while following these steps
     git clone https://github.com/cloudmesh/cloudmesh.sys.git
     git clone https://github.com/cloudmesh/proceedings.git
     cd ~/github/cloudmesh.common
-    python setup.py install; pip install .
+    pip install .
     cd ~/github/cloudmesh.cmd5
-    python setup.py install; pip install .
+    pip install .
     cd ~/github/cloudmesh.sys
-    python setup.py install; pip install .
+    pip install .
     cd ~/github/proceedings/cloudmesh.proceedings
-    python setup.py install; pip install .
+    pip install .
 
 
 ## Checkout
@@ -105,9 +105,18 @@ following command
 
     $ cms proceedings list paper1
 
+## List paper2
 
+For quick checks on the README for paper2 you may want to use the
+following command
 
-# Deprecated
+    $ cms proceedings list paper2
 
-List all repos:
+## List peoject
+
+For quick checks on the README for paper2 you may want to use the
+following command
+
+    $ cms proceedings list project
+
 
