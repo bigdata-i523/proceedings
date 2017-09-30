@@ -208,7 +208,7 @@ class Proceedings(object):
             dirs = glob.glob('{home}/hid*'.format(home=self.home))
             for directory in dirs:
                 hid = directory.replace("{home}/".format(home=self.home), "")
-                # print(hid)
+                print(hid)
                 filename = directory + '/README.md'
                 if os.path.isfile(filename):
                     data = self.attribute(hid, name)
