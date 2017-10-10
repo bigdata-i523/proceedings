@@ -22,7 +22,7 @@ and can be done while following these steps
     git clone https://github.com/cloudmesh/cloudmesh.common.git
     git clone https://github.com/cloudmesh/cloudmesh.cmd5.git
     git clone https://github.com/cloudmesh/cloudmesh.sys.git
-    git clone https://github.com/cloudmesh/proceedings.git
+    git clone https://github.com/bigdata-i523/proceedings.git
     cd ~/github/cloudmesh.common
     pip install .
     cd ~/github/cloudmesh.cmd5
