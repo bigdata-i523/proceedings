@@ -18,18 +18,20 @@ and can be done while following these steps
 
     mkdir ~/github
     mkdir ~/github/bigdata-i523
-    cd ~/github
+    mkdir ~/github/cloudmesh
+    cd ~/github/cloudmesh
     git clone https://github.com/cloudmesh/cloudmesh.common.git
     git clone https://github.com/cloudmesh/cloudmesh.cmd5.git
     git clone https://github.com/cloudmesh/cloudmesh.sys.git
+    cd ~/github/cloudmesh/bigdata-i523
     git clone https://github.com/bigdata-i523/proceedings.git
-    cd ~/github/cloudmesh.common
+    cd ~/github/cloudmesh/cloudmesh.common
     pip install .
-    cd ~/github/cloudmesh.cmd5
+    cd ~/github/cloudmesh/cloudmesh.cmd5
     pip install .
-    cd ~/github/cloudmesh.sys
+    cd ~/github/cloudmesn/cloudmesh.sys
     pip install .
-    cd ~/github/proceedings/cloudmesh.proceedings
+    cd ~/github/bigdata-i523/proceedings/cloudmesh.proceedings
     pip install .
 
 
