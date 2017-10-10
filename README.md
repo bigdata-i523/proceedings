@@ -16,6 +16,8 @@ You must have cmd5 installed from source. This is documented at
 
 and can be done while following these steps
 
+    pip install pip -U
+    pip install setuptools -U
     mkdir ~/github
     mkdir ~/github/bigdata-i523
     mkdir ~/github/cloudmesh
