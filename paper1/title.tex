@@ -1,5 +1,6 @@
-\documentclass[12pt]{article}
+\documentclass[12pt]{book}
 \usepackage{fullpage}
+\usepackage{datetime}
 \usepackage[final]{pdfpages}
 \usepackage{hyperref}
 \usepackage{tocloft}
@@ -28,6 +29,8 @@
     {\large \@author}}              
 \makeatother
 \author{%
+    \today, \currenttime \\
+    \vspace{1cm}
     Editor: \\
     Gregor von Laszewski\\
     Department of Intelligent Systems Engeneering\\

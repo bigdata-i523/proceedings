@@ -85,7 +85,7 @@ class ProceedingsCommand(PluginCommand):
                 if arguments.ATTRIBUTE == 'owner':
                     print(Printer.write(ok, order=['hid', 'name', 'url']))
                 elif arguments.ATTRIBUTE.startswith('paper'):
-                    print(Printer.write(ok, order=['dir', 'hid', 'author', 'title']))
+                    print(Printer.write(ok, order=['dir', 'hid', 'type', 'chapter', 'author', 'title']))
 
         elif arguments.pdf and arguments.make:
 

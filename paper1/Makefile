@@ -30,3 +30,9 @@ clean:
 publish:
 	cp proceedings.pdf  ~/github/laszewsk/laszewski.github.io/papers/vonLaszewski-i523.pdf
 	cd ~/github/laszewsk/laszewski.github.io/papers ; git commit -m "update vonLaszewski-i523.pdf" vonLaszewski-i523.pdf ; git push
+
+pull:
+	cms proceedings pull
+
+readme:
+	cms proceedings commit \"fix readme\"

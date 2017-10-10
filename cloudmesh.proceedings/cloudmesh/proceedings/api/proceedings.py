@@ -48,7 +48,7 @@ class Proceedings(object):
 
     def execute(self, hid, command, base='paper1', kind='paper1'):
         banner(hid + ": " + command)
-        commandline = "cd {home}/{hid}/{kind}; {command}".format(home=self.home,
+        commandline = "cd {home}/{hid}/{kind}; {command} > p.log".format(home=self.home,
                                                                  command=command,
                                                                  hid=hid,
                                                                  base=base,
