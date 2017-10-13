@@ -10,6 +10,10 @@ https://api.github.com/orgs/bigdata-i523
 
 # Requirements
 
+on osx 
+
+    sudo apt-get curl
+
 You must have cmd5 installed from source. This is documented at
 
 * https://github.com/cloudmesh/cloudmesh.cmd5
@@ -34,6 +38,7 @@ and can be done while following these steps
     cd ~/github/cloudmesn/cloudmesh.sys
     pip install .
     cd ~/github/bigdata-i523/proceedings/cloudmesh.proceedings
+    pip install -r requirements.txt
     pip install .
 
 
