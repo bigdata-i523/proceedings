@@ -1,88 +1,38 @@
-FILE=report
-FLAGS=-interaction nonstopmode -halt-on-error -file-line-error 
-REVIEW=review
+
+DOCUMENT=proceedings
+
 
 all:
-	pdflatex ${FLAGS} ${FILE}
-	bibtex ${FILE}
-	pdflatex ${FLAGS} ${FILE}
-	pdflatex ${FLAGS} ${FILE}
+	cms proceedings pdf all paper1 make
+	make -f Makefile proc
 
-review-create:
-	cp -i report.tex review.tex
-	make -f Makefile review-fetch
+proc:
+	python paper1.py > $(DOCUMENT).tex
+	pdflatex $(DOCUMENT)
+	pdflatex $(DOCUMENT)
+	pdflatex $(DOCUMENT)
 
-insert:
-	rm  -f bibtex-error.tex
-	echo '\\section{Bibtex Issues}' > bibtex-error.tex
-	bibtex -terse ${REVIEW} | sed -e 's/^/\\todo[inline]{/'  | sed -e 's/.*/&}/'  >> bibtex-error.tex
-	sed 's/^\\end{document}/\\input{bibtex-error}\\input{issues}\\end{document}/g' < ${REVIEW}.tex > tmp.tex
-	mv tmp.tex ${REVIEW}.tex
-	tail ${REVIEW}.tex
+compile:
+	python all.py
 
-review-fetch:
-	wget -q https://raw.githubusercontent.com/bigdata-i523/sample-hid000/master/paper1/issues.tex
-
-review:
-	pdflatex ${FLAGS} ${REVIEW}
-	bibtex ${REVIEW}
-	make -f Makefile insert
-	pdflatex ${FLAGS} ${REVIEW}
-	bibtex ${REVIEW}
-	pdflatex ${FLAGS} ${REVIEW}
-	pdflatex ${FLAGS} ${REVIEW}
-	open ${REVIEW}.pdf
-	bibtex -terse ${REVIEW} | sed -e 's/^/\* [ ] /' 
-
-pack:
-	rm -rf ${FILE}
-	mkdir ${FILE}
-	mkdir ${FILE}/tex
-	mkdir ${FILE}/images
-	cp ${FILE}.tex ${FILE}
-	cp ${FILE}.bib ${FILE}
-	cp ${FILE}.pdf ${FILE}
-	cp tex/sig-alternate-2013.cls ${FILE}/tex
-	cp -r images/*.pdf ${FILE}/images
-	tar cvf ${FILE}.tar ${FILE}
-
-clean:
-	rm -rf *~ *.aux *.bbl *.dvi *.log *.out *.blg *.pdf *.toc *.fdb_latexmk *.fls *.fff *.lof *.lot *.ttt *.cut
-	rm -rf _region_.*
 
 view:
-	open ${FILE}.pdf
+	open $(DOCUMENT).pdf
 
-# all dependce tracking taking care of by Latexmk
-fast:
-	latexmk -pdf ${FILE}
 
-watch:
-	latexmk -pvc -view=pdf ${FILE}
+review:
+	python reviews.py > reviews.tex
+	pdflatex reviews
 
-.PHONY: all clean view fast watch
-
-pull:
-	git pull
-
-up:
-	git commit -a
-	git push
+clean:
+	rm *.toc *.aux *.log *.out
 
 publish:
-	@echo "==============================================================="
-	@echo "publish ${FILE}.pdf -> http://cyberaide.github.io/papers/${FILE}.pdf" 
-	@echo "==============================================================="
-	cp ${FILE}.pdf /tmp
-	cd ..; git checkout gh-pages
-	cp /tmp/${FILE}.pdf .
-	git add ${FILE}.pdf
-	git commit -m "adding new version of ${FILE}.pdf" ${FILE}.pdf
-	git push
-	cd bigdata
-	git checkout master
+	cp proceedings.pdf  ~/github/laszewsk/laszewski.github.io/papers/vonLaszewski-i523.pdf
+	cd ~/github/laszewsk/laszewski.github.io/papers ; git commit -m "update vonLaszewski-i523.pdf" vonLaszewski-i523.pdf ; git push
 
+pull:
+	cms proceedings pull
 
-bib-extract:
-	echo "EXTRACTING ALL USED CITATIONS INTO A BIB FILE"
-	bibtool -x ${FILE}.aux -o ${FILE}.bib
+readme:
+	cms proceedings commit \"fix readme\"
