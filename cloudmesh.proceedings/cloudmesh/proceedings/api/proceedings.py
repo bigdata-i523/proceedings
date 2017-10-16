@@ -145,29 +145,6 @@ class Proceedings(object):
                 # os.system("cp proceedings/LICENSE " + directory)
                 # os.system('cd ' + directory + ';  git commit -m "add License" LICENSE; git push')
 
-    def extract_yaml_text(self, s):
-        """
-        Takes a string and returns all lines between ``` if they start at the beginning of the line
-        :return: text between ^```
-        """
-        output = ""
-        flag = False
-        try:
-            for o in s.split("\n"):
-                if o.strip().startswith("```") and not flag:
-                    flag = True
-                    continue
-                if flag and not o.strip().startswith("```"):
-                    output = output + o + "\n"
-                if o.strip().startswith("```") and flag:
-                    flag = False
-                    continue
-        except Exception as e:
-            print(e)
-            return None
-
-        return output.strip()
-
     def get_file(self, filename):
         try:
             with open(filename, 'r') as f:
@@ -178,18 +155,22 @@ class Proceedings(object):
         return content
 
     def readme(self, hid):
-        filename = "{home}/{hid}/README.md".format(hid=hid, home=self.home)
-        if os.path.isfile(filename):
-            content = self.get_file(filename)
-            content = self.extract_yaml_text(content)
-        else:
-            content = None
+        filename = "{home}/{hid}/README.yml".format(hid=hid, home=self.home)
+        content = None
+        try:
+
+            if os.path.isfile(filename):
+                content = self.get_file(filename)
+                # content = yaml.load(content)
+                # print (content)
+                # content = self.extract_yaml_text(content)
+        except Exception as e:
+            pass
         return content
 
     def attribute(self, hid, name):
         if hid is not None:
             s = self.readme(hid)
-            # print (s)
             if s is None:
                 return None
             try:
@@ -208,14 +189,14 @@ class Proceedings(object):
             dirs = glob.glob('{home}/hid*'.format(home=self.home))
             for directory in dirs:
                 hid = directory.replace("{home}/".format(home=self.home), "")
-                print(hid)
-                filename = directory + '/README.md'
+                # print(hid)
+                filename = directory + '/README.yml'
                 if os.path.isfile(filename):
                     data = self.attribute(hid, name)
                     data['dir'] = hid
                     #print(data)
                     if data is None:
-                        missing.append("{hid}, owner data is missing in README.md".format(hid=hid))
+                        missing.append("{hid}, owner data is missing in README.yml".format(hid=hid))
                     else:
                         ok[hid] = data
             return ok, missing

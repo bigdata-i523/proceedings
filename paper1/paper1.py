@@ -24,10 +24,15 @@ print ("""
 p = Proceedings()
 hids = p.read_hid_list()
 
-# print (hids)
+
+
+print (hids)
+
+print ("LLLL", p)
 
 for hid in hids:
     print(hid, file=sys.stderr)
+
     owner = p.attribute(hid, 'owner')
     paper = p.attribute(hid, kind)
     d = dict(paper)

@@ -3,6 +3,9 @@ clean:
 	cd paper2; rm -rf *.aux *.out *.toc
 	cd project; rm -rf *.aux *.out *.toc
 
+error-quote:
+	echo "fgrep \" ../hid*/paper1/report.tex | awk -F':' '{print $1}' | sort -u"
+
 install:
 	mkdir ~/github
 	mkdir ~/github/bigdata-i523
