@@ -26,9 +26,9 @@ hids = p.read_hid_list()
 
 
 
-print (hids)
+#print (hids)
 
-print ("LLLL", p)
+#print ("LLLL", p)
 
 for hid in hids:
     print(hid, file=sys.stderr)
