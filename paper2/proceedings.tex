@@ -1,0 +1,643 @@
+\documentclass[12pt]{book}
+\usepackage{fullpage}
+\usepackage{datetime}
+\usepackage[final]{pdfpages}
+\usepackage{hyperref}
+\usepackage{tocloft}
+\renewcommand\cftsecafterpnum{\vskip0pt}
+\renewcommand\cftsubsecafterpnum{\vskip0pt}
+
+% Adjust sectional unit title fonts in ToC
+\renewcommand{\cftsecfont}{\sffamily}
+\renewcommand{\cftsubsecfont}{\sffamily}
+
+\usepackage{amsmath}
+\usepackage{tikz}
+\usepackage{epigraph}
+\usepackage{longtable}
+
+\renewcommand\epigraphflush{flushright}
+\renewcommand\epigraphsize{\normalsize}
+\setlength\epigraphwidth{0.7\textwidth}
+
+\definecolor{titlepagecolor}{cmyk}{1,.60,0,.40}
+
+\DeclareFixedFont{\titlefont}{T1}{ppl}{b}{it}{0.5in}
+
+\makeatletter                       
+\def\printauthor{%                  
+    {\large \@author}}              
+\makeatother
+\author{%
+    \today, \currenttime \\
+    \vspace{1cm}
+    Editor: \\
+    Gregor von Laszewski\\
+    Department of Intelligent Systems Engeneering\\
+    Indiana University \\
+    \texttt{laszewski@gmail.com}\vspace{20pt} \\   
+    }
+
+% The following code is borrowed from: http://tex.stackexchange.com/a/86310/10898
+
+\newcommand\titlepagedecoration{%
+\begin{tikzpicture}[remember picture,overlay,shorten >= -10pt]
+
+\coordinate (aux1) at ([yshift=-15pt]current page.north east);
+\coordinate (aux2) at ([yshift=-410pt]current page.north east);
+\coordinate (aux3) at ([xshift=-4.5cm]current page.north east);
+\coordinate (aux4) at ([yshift=-150pt]current page.north east);
+
+\begin{scope}[titlepagecolor!40,line width=12pt,rounded corners=12pt]
+\draw
+  (aux1) -- coordinate (a)
+  ++(225:5) --
+  ++(-45:5.1) coordinate (b);
+\draw[shorten <= -10pt]
+  (aux3) --
+  (a) --
+  (aux1);
+\draw[opacity=0.6,titlepagecolor,shorten <= -10pt]
+  (b) --
+  ++(225:2.2) --
+  ++(-45:2.2);
+\end{scope}
+\draw[titlepagecolor,line width=8pt,rounded corners=8pt,shorten <= -10pt]
+  (aux4) --
+  ++(225:0.8) --
+  ++(-45:0.8);
+\begin{scope}[titlepagecolor!70,line width=6pt,rounded corners=8pt]
+\draw[shorten <= -10pt]
+  (aux2) --
+  ++(225:3) coordinate[pos=0.45] (c) --
+  ++(-45:3.1);
+\draw
+  (aux2) --
+  (c) --
+  ++(135:2.5) --
+  ++(45:2.5) --
+  ++(-45:2.5) coordinate[pos=0.3] (d);   
+\draw 
+  (d) -- +(45:1);
+\end{scope}
+\end{tikzpicture}%
+}
+
+
+\textheight=23.5cm
+
+\begin{document}
+%\title{Big Data Technologies}
+
+%\author{Editor: Gregor von Laszewski}
+
+
+\begin{titlepage}
+
+\noindent
+\titlefont Use Cases in Big Data \\ Software and Analytics\par
+\epigraph{Vol. 1, Fall 2017}%
+{\textit{Bloomington, Indiana}}
+\null\vfill
+\vspace*{1cm}
+\noindent
+\hfill
+%begin{figure}
+%\includegraphics[width=.5\paperwidth]{images/wordcloud.pdf}
+%\end{figure}
+\begin{minipage}{0.50\linewidth}
+    \begin{flushright}
+        \printauthor
+    \end{flushright}
+\end{minipage}
+%
+\begin{minipage}{0.02\linewidth}
+    \rule{1pt}{125pt}
+\end{minipage}
+\titlepagedecoration
+\end{titlepage}
+
+
+
+%\maketitle
+
+
+
+
+\newpage
+\tableofcontents
+\newpage
+
+\chapter{Preface}
+\section{List of Papers}
+
+\begin{footnotesize}
+\begin{longtable}{|p{1cm}p{5cm}p{9cm}|}
+\hline \textbf{Name} & \textbf{HID} & \textbf{Title} \\ \hline \hline
+
+hid101 & Huiyi Chen & Benchmarking a BigData Docker deployment  \\
+\hline
+hid102 & Dianprakasa, Arif & Benchmarking a BigData Docker deployment  \\
+\hline
+hid104 & Jones, Gabriel & Big Data = Big Bias? Ethical Challenges of Big Data  \\
+\hline
+hid105 & Lipe-Melton, Josh & Benchmarking a BigData Docker deployment  \\
+\hline
+hid106 & Qiaoyi Liu & Benchmarking a BigData Docker deployment  \\
+\hline
+hid107 & Ni,Juan & Benchmarking a BigData Docker deployment  \\
+\hline
+hid109 & Shiqi Shen & Big Data and Business Intelligence  \\
+\hline
+hid111 & Lewis, Derek & Benchmarking a BigData Docker deployment  \\
+\hline
+hid201 & Arnav, Arnav & None  \\
+\hline
+hid202 & Himani Bhatt & This is my paper about the other abc  \\
+\hline
+hid203 & error: yaml & This is my paper about the other abc  \\
+\hline
+hid204 & Chaturvedi, Dhawal & Benchmarking a BigData Docker deployment  \\
+\hline
+hid205 & Chaudhary, Mrunal L & This is my paper about the other abc  \\
+\hline
+hid208 & Devineni, Jyothi Pranavi & TBD  \\
+\hline
+hid209 & Han, Wenxuan & Clustering Algorithms in Big Data Analysis  \\
+\hline
+hid210 & error: yaml & Clustering Algorithms in Big Data Analysis  \\
+\hline
+hid211 & Ajinkya Khamkar & Benchmarking a BigData Docker deployment  \\
+\hline
+hid212 & Kumar, Saurabh & Not yet decided  \\
+\hline
+hid213 & Liu, Yuchen & TBD  \\
+\hline
+hid214 & Lu, Junjie & This is my paper about the other abc  \\
+\hline
+hid215 & Mallala, Bharat & to be decided  \\
+\hline
+hid216 & Millard, Mathew & n/a  \\
+\hline
+hid218 & Niu, Geng & This is my paper about the other abc  \\
+\hline
+hid219 & Syam Sundar Herle Parampali Sreenath & Benchmarking a BigData Docker deployment  \\
+\hline
+hid224 & Rawat, Neha & Big Data Applications in the Energy and Utilities Sector  \\
+\hline
+hid225 & Schwartzer, Matthew & ...  \\
+\hline
+hid228 & Swargam, Prashanth & TBD  \\
+\hline
+hid229 & ZhiCheng Zhu & TBD  \\
+\hline
+hid230 & YuanMing Huang & Big data with natural language processing  \\
+\hline
+hid231 & Vegi, Karthik & Using Big Data to battle Air Pollution  \\
+\hline
+hid232 & Rahul Velayutham & This is my paper about the other abc  \\
+\hline
+hid233 & Wang, Jiaan & Big Data Applications in Virtual Assistants  \\
+\hline
+hid234 & Weixuan Wang & Big Data and Edge Computing in Health Informatics for People with Disabilities.  \\
+\hline
+hid235 & Wu, Yujie & Big Data  \\
+\hline
+hid236 & Yang Weipeng & Benchmarking a BigData Docker deployment  \\
+\hline
+hid237 & Ahmed, Tousif & Benchmarking a BigData Docker deployment  \\
+\hline
+hid301 & Arora, Gagan & Benchmarking a BigData Docker deployment  \\
+\hline
+hid302 & Sushant Athaley & Hadoop and MongoDB in support of Big Data Applications and Analytics  \\
+\hline
+hid304 & Ricky Carmickle & Big Data and Analytics in Deep Space Telemetry and Navigation  \\
+\hline
+hid305 & Andres Castro Benavides & Big Data applied to zoning and city planning.  \\
+\hline
+hid306 & Cheruvu, Murali & To be decided  \\
+\hline
+hid308 & Pravin Deshmukh & Parallel Computing and Big Data  \\
+\hline
+hid309 & error: yaml & Parallel Computing and Big Data  \\
+\hline
+hid310 & error: yaml & Parallel Computing and Big Data  \\
+\hline
+hid311 & Durbin, Matthew & Benchmarking a BigData Docker deployment  \\
+\hline
+hid312 & Neil Eliason & To be decided  \\
+\hline
+hid313 & Tiffany Fabianac & Big Data Applications in Laboratories  \\
+\hline
+hid314 & Fadnavis, Sarang & Benchmarking a BigData Docker deployment  \\
+\hline
+hid315 & Garner, Jeffry & Benchmarking a BigData Docker deployment  \\
+\hline
+hid316 & Robert Gasiewicz & Big data on IoT Smart Refrigerators  \\
+\hline
+hid318 & Irey, Ryan & Benchmarking a BigData Docker deployment  \\
+\hline
+hid319 & Mani Kumar Kagita & Big data Analytics and effective decision making in Telecommunication industry  \\
+\hline
+hid320 & Elena Kirzhner & This is my paper about Big Data Analytics and Applications in Sustainable Fish Breeding  \\
+\hline
+hid321 & Knapp, William & Benchmarking a BigData Docker deployment  \\
+\hline
+hid323 & Uma M Kugan & None  \\
+\hline
+hid324 & Ashok Kuppuraj & TBD  \\
+\hline
+hid325 & J. Robert Langlois & This is my paper about data sharing  \\
+\hline
+hid326 & Mahendrakar, Mohan & Benchmarking a BigData Docker deployment  \\
+\hline
+hid327 & Marks, Paul & The Impact of Self-Driving Cars on the Economy  \\
+\hline
+hid328 & Dhanya Mathew & Big data analytics in data center network monitoring  \\
+\hline
+hid329 & Ashley Miller & Big Data Analytics and the Impact on Personal Privacy  \\
+\hline
+hid330 & Janaki Mudvari Khatiwada & MQTT for Big Data and Edge Computing  \\
+\hline
+hid331 & Tyler Peterson & Big Data Applications in Using Neural Network for Medical Image Analysis  \\
+\hline
+hid332 & Judy Phillips & Big Data Analytics in Developing Countries  \\
+\hline
+hid333 & Anil Ravi & Nartural language processing (NLP) for speech analysis and voice recognition  \\
+\hline
+hid334 & Peter Russell & Advancements in Drone Technology for the US Military  \\
+\hline
+hid335 & Sean Shiverick & Big Health Data from Wearable Electronic Sensors (WES) and the Treatment of Opioid Addiction
+  \\
+\hline
+hid336 & Jordan Simmons & Big Data Analysis for Computer Network Defense  \\
+\hline
+hid337 & Ashok Reddy Singam & Natural Language Processing (NLP) to analyze human speech data  \\
+\hline
+hid338 & Sriramulu, Anand & Benchmarking a BigData Docker deployment  \\
+\hline
+hid339 & Hady Sylla & Benchmarking a BigData Docker deployment  \\
+\hline
+hid340 & Tim Thompson & Big data on the blockchain? Distributed networks and large-scale analytics  \\
+\hline
+hid341 & Tibenkana, Jacob & This is my paper about the other abc  \\
+\hline
+hid342 & Udoyen, Nsikan & Still under consideration  \\
+\hline
+hid343 & Usifo, Borga & None  \\
+\hline
+hid345 & Wood, Ross & Big Data Analytics and influence on althetics.  \\
+\hline
+hid346 & Zachary Meier & This is my paper about the other abc  \\
+\hline
+hid347 & Jeramy Townsley & Sociological Methods of Big Data  \\
+\hline
+hid348 & Budhaditya Roy & Something about NOSQL people DID NOT DO IN i524 Figure out a topic which is not covered need approval  \\
+\hline
+\end{longtable}
+\end{footnotesize}
+\newpage
+
+\phantomsection
+\addtocounter{chapter}{1}
+\addcontentsline{toc}{chapter}{\arabic{chapter}  Biology }
+\phantomsection
+\addtocounter{chapter}{1}
+\addcontentsline{toc}{chapter}{\arabic{chapter}  Business }
+\phantomsection
+\addtocounter{chapter}{1}
+\addcontentsline{toc}{chapter}{\arabic{chapter}  Edge Computing }
+\phantomsection
+\addtocounter{chapter}{1}
+\addcontentsline{toc}{chapter}{\arabic{chapter}  Education }
+\phantomsection
+\addtocounter{chapter}{1}
+\addcontentsline{toc}{chapter}{\arabic{chapter}  Energy }
+\phantomsection
+\addtocounter{chapter}{1}
+\addcontentsline{toc}{chapter}{\arabic{chapter}  Environment }
+\phantomsection
+\addtocounter{chapter}{1}
+\addcontentsline{toc}{chapter}{\arabic{chapter}  Government }
+\phantomsection
+\addtocounter{chapter}{1}
+\addcontentsline{toc}{chapter}{\arabic{chapter}  Health }
+\phantomsection
+\addtocounter{chapter}{1}
+\addcontentsline{toc}{chapter}{\arabic{chapter}  Lifestyle }
+\phantomsection
+\addtocounter{section}{1}
+\addcontentsline{toc}{section}{\arabic{section}  hid347 \hfill Status: 0\% \newline Sociological Methods of Big Data \newline Jeramy Townsley }
+% /Users/grey/github/bigdata-i523/hid347/paper2/report.pdf  not found
+\phantomsection
+\addtocounter{chapter}{1}
+\addcontentsline{toc}{chapter}{\arabic{chapter}  Machine Learning }
+\phantomsection
+\addtocounter{chapter}{1}
+\addcontentsline{toc}{chapter}{\arabic{chapter}  Media }
+\phantomsection
+\addtocounter{section}{1}
+\addcontentsline{toc}{section}{\arabic{section}  hid231 \hfill Status: Not started \newline Using Big Data to battle Air Pollution \newline Vegi, Karthik }
+% /Users/grey/github/bigdata-i523/hid231/paper2/report.pdf  not found
+\phantomsection
+\addtocounter{section}{1}
+\addcontentsline{toc}{section}{\arabic{section}  hid336 \hfill Status: 0\% \newline Big Data Analysis for Computer Network Defense \newline Jordan Simmons }
+\includepdf[pages=-,pagecommand=\thispagestyle{plain}]{/Users/grey/github/bigdata-i523/hid336/paper2/report.pdf}
+\phantomsection
+\addtocounter{chapter}{1}
+\addcontentsline{toc}{chapter}{\arabic{chapter}  Physics }
+\phantomsection
+\addtocounter{chapter}{1}
+\addcontentsline{toc}{chapter}{\arabic{chapter}  Security }
+\phantomsection
+\addtocounter{section}{1}
+\addcontentsline{toc}{section}{\arabic{section}  hid316 \hfill Status: 10\% \newline Big data on IoT Smart Refrigerators \newline Robert Gasiewicz }
+% /Users/grey/github/bigdata-i523/hid316/paper2/report.pdf  not found
+\phantomsection
+\addtocounter{section}{1}
+\addcontentsline{toc}{section}{\arabic{section}  hid329 \hfill Status: 0\% \newline Big Data Analytics and the Impact on Personal Privacy \newline Ashley Miller }
+% /Users/grey/github/bigdata-i523/hid329/paper2/report.pdf  not found
+\phantomsection
+\addtocounter{chapter}{1}
+\addcontentsline{toc}{chapter}{\arabic{chapter}  Sports }
+\phantomsection
+\addtocounter{chapter}{1}
+\addcontentsline{toc}{chapter}{\arabic{chapter}  Technology }
+\phantomsection
+\addtocounter{chapter}{1}
+\addcontentsline{toc}{chapter}{\arabic{chapter}  Text }
+\phantomsection
+\addtocounter{chapter}{1}
+\addcontentsline{toc}{chapter}{\arabic{chapter}  Theory }
+\phantomsection
+\addtocounter{chapter}{1}
+\addcontentsline{toc}{chapter}{\arabic{chapter}  Transportation }
+\phantomsection
+\addtocounter{chapter}{1}
+\addcontentsline{toc}{chapter}{\arabic{chapter}  TBD }
+\phantomsection
+\addtocounter{section}{1}
+\addcontentsline{toc}{section}{\arabic{section}  hid101 \hfill Status: not yet started \newline Benchmarking a BigData Docker deployment \newline Huiyi Chen }
+% /Users/grey/github/bigdata-i523/hid101/paper2/report.pdf  not found
+\phantomsection
+\addtocounter{section}{1}
+\addcontentsline{toc}{section}{\arabic{section}  hid102 \hfill Status: unkown \newline Benchmarking a BigData Docker deployment \newline Gregor von Laszewski }
+% /Users/grey/github/bigdata-i523/hid102/paper2/report.pdf  not found
+\phantomsection
+\addtocounter{section}{1}
+\addcontentsline{toc}{section}{\arabic{section}  hid104 \hfill Status: 5\% \newline Big Data = Big Bias? Ethical Challenges of Big Data \newline Jones, Gabriel }
+% /Users/grey/github/bigdata-i523/hid104/paper2/report.pdf  not found
+\phantomsection
+\addtocounter{section}{1}
+\addcontentsline{toc}{section}{\arabic{section}  hid105 \hfill Status: unkown \newline Benchmarking a BigData Docker deployment \newline Gregor von Laszewski }
+% /Users/grey/github/bigdata-i523/hid105/paper2/report.pdf  not found
+\phantomsection
+\addtocounter{section}{1}
+\addcontentsline{toc}{section}{\arabic{section}  hid106 \hfill Status: None \newline Benchmarking a BigData Docker deployment \newline Qiaoyi Liu }
+% /Users/grey/github/bigdata-i523/hid106/paper2/report.pdf  not found
+\phantomsection
+\addtocounter{section}{1}
+\addcontentsline{toc}{section}{\arabic{section}  hid107 \hfill Status: unkown \newline Benchmarking a BigData Docker deployment \newline Gregor von Laszewski }
+% /Users/grey/github/bigdata-i523/hid107/paper2/report.pdf  not found
+\phantomsection
+\addtocounter{section}{1}
+\addcontentsline{toc}{section}{\arabic{section}  hid109 \hfill Status: 0\% \newline Big Data and Business Intelligence \newline Shiqi Shen }
+\includepdf[pages=-,pagecommand=\thispagestyle{plain}]{/Users/grey/github/bigdata-i523/hid109/paper2/report.pdf}
+\phantomsection
+\addtocounter{section}{1}
+\addcontentsline{toc}{section}{\arabic{section}  hid111 \hfill Status: unkown \newline Benchmarking a BigData Docker deployment \newline Gregor von Laszewski }
+% /Users/grey/github/bigdata-i523/hid111/paper2/report.pdf  not found
+\phantomsection
+\addtocounter{section}{1}
+\addcontentsline{toc}{section}{\arabic{section}  hid201 \hfill Status: not started \newline None \newline Arnav, Arnav }
+\includepdf[pages=-,pagecommand=\thispagestyle{plain}]{/Users/grey/github/bigdata-i523/hid201/paper2/report.pdf}
+\phantomsection
+\addtocounter{section}{1}
+\addcontentsline{toc}{section}{\arabic{section}  hid202 \hfill Status: 0\% \newline This is my paper about the other abc \newline Himani Bhatt }
+% /Users/grey/github/bigdata-i523/hid202/paper2/report.pdf  not found
+\phantomsection
+\addtocounter{section}{1}
+\addcontentsline{toc}{section}{\arabic{section}  hid204 \hfill Status: Not started yet \newline Benchmarking a BigData Docker deployment \newline Gregor von Laszewski }
+% /Users/grey/github/bigdata-i523/hid204/paper2/report.pdf  not found
+\phantomsection
+\addtocounter{section}{1}
+\addcontentsline{toc}{section}{\arabic{section}  hid205 \hfill Status: 0\% \newline This is my paper about the other abc \newline Chaudhary Mrunal L }
+% /Users/grey/github/bigdata-i523/hid205/paper2/report.pdf  not found
+\phantomsection
+\addtocounter{section}{1}
+\addcontentsline{toc}{section}{\arabic{section}  hid208 \hfill Status: unkown \newline TBD \newline Jyothi Pranavi Devineni }
+% /Users/grey/github/bigdata-i523/hid208/paper2/report.pdf  not found
+\phantomsection
+\addtocounter{section}{1}
+\addcontentsline{toc}{section}{\arabic{section}  hid211 \hfill Status: unkown \newline Benchmarking a BigData Docker deployment \newline Gregor von Laszewski }
+% /Users/grey/github/bigdata-i523/hid211/paper2/report.pdf  not found
+\phantomsection
+\addtocounter{section}{1}
+\addcontentsline{toc}{section}{\arabic{section}  hid212 \hfill Status: unkown \newline Not yet decided \newline Kumar, Saurabh }
+% /Users/grey/github/bigdata-i523/hid212/paper2/report.pdf  not found
+\phantomsection
+\addtocounter{section}{1}
+\addcontentsline{toc}{section}{\arabic{section}  hid213 \hfill Status: unkown \newline TBD \newline Yuchen Liu }
+% /Users/grey/github/bigdata-i523/hid213/paper2/report.pdf  not found
+\phantomsection
+\addtocounter{section}{1}
+\addcontentsline{toc}{section}{\arabic{section}  hid214 \hfill Status: 0\% \newline This is my paper about the other abc \newline Gregor von Laszewski }
+% /Users/grey/github/bigdata-i523/hid214/paper2/report.pdf  not found
+\phantomsection
+\addtocounter{section}{1}
+\addcontentsline{toc}{section}{\arabic{section}  hid215 \hfill Status: yet to start \newline to be decided \newline Mallala, Bharat }
+% /Users/grey/github/bigdata-i523/hid215/paper2/report.pdf  not found
+\phantomsection
+\addtocounter{section}{1}
+\addcontentsline{toc}{section}{\arabic{section}  hid216 \hfill Status: not started \newline n/a \newline Millard, Mathew }
+% /Users/grey/github/bigdata-i523/hid216/paper2/report.pdf  not found
+\phantomsection
+\addtocounter{section}{1}
+\addcontentsline{toc}{section}{\arabic{section}  hid218 \hfill Status: 0\% \newline This is my paper about the other abc \newline Niu, Geng }
+% /Users/grey/github/bigdata-i523/hid218/paper2/report.pdf  not found
+\phantomsection
+\addtocounter{section}{1}
+\addcontentsline{toc}{section}{\arabic{section}  hid219 \hfill Status: unkown \newline Benchmarking a BigData Docker deployment \newline Gregor von Laszewski }
+% /Users/grey/github/bigdata-i523/hid219/paper2/report.pdf  not found
+\phantomsection
+\addtocounter{section}{1}
+\addcontentsline{toc}{section}{\arabic{section}  hid224 \hfill Status: not started \newline Big Data Applications in the Energy and Utilities Sector \newline Rawat, Neha }
+% /Users/grey/github/bigdata-i523/hid224/paper2/report.pdf  not found
+\phantomsection
+\addtocounter{section}{1}
+\addcontentsline{toc}{section}{\arabic{section}  hid225 \hfill Status: not started \newline ... \newline Schwartzer, Matthew }
+% /Users/grey/github/bigdata-i523/hid225/paper2/report.pdf  not found
+\phantomsection
+\addtocounter{section}{1}
+\addcontentsline{toc}{section}{\arabic{section}  hid228 \hfill Status: 0\% \newline TBD \newline Swargam, Prashanth }
+% /Users/grey/github/bigdata-i523/hid228/paper2/report.pdf  not found
+\phantomsection
+\addtocounter{section}{1}
+\addcontentsline{toc}{section}{\arabic{section}  hid229 \hfill Status: not yet started \newline TBD \newline ZhiCheng Zhu }
+% /Users/grey/github/bigdata-i523/hid229/paper2/report.pdf  not found
+\phantomsection
+\addtocounter{section}{1}
+\addcontentsline{toc}{section}{\arabic{section}  hid230 \hfill Status: unkown \newline Big data with natural language processing \newline YuanMing Huang }
+% /Users/grey/github/bigdata-i523/hid230/paper2/report.pdf  not found
+\phantomsection
+\addtocounter{section}{1}
+\addcontentsline{toc}{section}{\arabic{section}  hid232 \hfill Status: 0\% \newline This is my paper about the other abc \newline Gregor von Laszewski }
+% /Users/grey/github/bigdata-i523/hid232/paper2/report.pdf  not found
+\phantomsection
+\addtocounter{section}{1}
+\addcontentsline{toc}{section}{\arabic{section}  hid234 \hfill Status: 0\% \newline Big Data and Edge Computing in Health Informatics for People with Disabilities. \newline Weixuan Wang }
+% /Users/grey/github/bigdata-i523/hid234/paper2/report.pdf  not found
+\phantomsection
+\addtocounter{section}{1}
+\addcontentsline{toc}{section}{\arabic{section}  hid235 \hfill Status: 0\% \newline Big Data \newline Yujie Wu }
+% /Users/grey/github/bigdata-i523/hid235/paper2/report.pdf  not found
+\phantomsection
+\addtocounter{section}{1}
+\addcontentsline{toc}{section}{\arabic{section}  hid236 \hfill Status: not started \newline Benchmarking a BigData Docker deployment \newline Weipeng Yang }
+% /Users/grey/github/bigdata-i523/hid236/paper2/report.pdf  not found
+\phantomsection
+\addtocounter{section}{1}
+\addcontentsline{toc}{section}{\arabic{section}  hid237 \hfill Status: 0\% \newline Benchmarking a BigData Docker deployment \newline Gregor von Laszewski }
+% /Users/grey/github/bigdata-i523/hid237/paper2/report.pdf  not found
+\phantomsection
+\addtocounter{section}{1}
+\addcontentsline{toc}{section}{\arabic{section}  hid301 \hfill Status: unkown \newline Benchmarking a BigData Docker deployment \newline Gregor von Laszewski }
+% /Users/grey/github/bigdata-i523/hid301/paper2/report.pdf  not found
+\phantomsection
+\addtocounter{section}{1}
+\addcontentsline{toc}{section}{\arabic{section}  hid302 \hfill Status: not started \newline Hadoop and MongoDB in support of Big Data Applications and Analytics \newline Sushant Athaley }
+% /Users/grey/github/bigdata-i523/hid302/paper2/report.pdf  not found
+\phantomsection
+\addtocounter{section}{1}
+\addcontentsline{toc}{section}{\arabic{section}  hid304 \hfill Status: 0\% \newline Big Data and Analytics in Deep Space Telemetry and Navigation \newline Ricky Carmickle }
+% /Users/grey/github/bigdata-i523/hid304/paper2/report.pdf  not found
+\phantomsection
+\addtocounter{section}{1}
+\addcontentsline{toc}{section}{\arabic{section}  hid305 \hfill Status: 0\% \newline Big Data applied to zoning and city planning. \newline Andres Castro Benavides }
+% /Users/grey/github/bigdata-i523/hid305/paper2/report.pdf  not found
+\phantomsection
+\addtocounter{section}{1}
+\addcontentsline{toc}{section}{\arabic{section}  hid306 \hfill Status: 0\% complete \newline To be decided \newline Murali Cheruvu }
+% /Users/grey/github/bigdata-i523/hid306/paper2/report.pdf  not found
+\phantomsection
+\addtocounter{section}{1}
+\addcontentsline{toc}{section}{\arabic{section}  hid308 \hfill Status: 0\% \newline Parallel Computing and Big Data \newline Pravin Deshmukh }
+% /Users/grey/github/bigdata-i523/hid308/paper2/report.pdf  not found
+\phantomsection
+\addtocounter{section}{1}
+\addcontentsline{toc}{section}{\arabic{section}  hid311 \hfill Status: 0\% \newline Benchmarking a BigData Docker deployment \newline Gregor von Laszewski }
+% /Users/grey/github/bigdata-i523/hid311/paper2/report.pdf  not found
+\phantomsection
+\addtocounter{section}{1}
+\addcontentsline{toc}{section}{\arabic{section}  hid312 \hfill Status: not yet started \newline To be decided \newline Neil Eliason }
+% /Users/grey/github/bigdata-i523/hid312/paper2/report.pdf  not found
+\phantomsection
+\addtocounter{section}{1}
+\addcontentsline{toc}{section}{\arabic{section}  hid313 \hfill Status: 5\% \newline Big Data Applications in Laboratories \newline Tiffany Fabianac }
+% /Users/grey/github/bigdata-i523/hid313/paper2/report.pdf  not found
+\phantomsection
+\addtocounter{section}{1}
+\addcontentsline{toc}{section}{\arabic{section}  hid314 \hfill Status: 0\% \newline Benchmarking a BigData Docker deployment \newline Gregor von Laszewski }
+% /Users/grey/github/bigdata-i523/hid314/paper2/report.pdf  not found
+\phantomsection
+\addtocounter{section}{1}
+\addcontentsline{toc}{section}{\arabic{section}  hid315 \hfill Status: 0\% \newline Benchmarking a BigData Docker deployment \newline Gregor von Laszewski }
+% /Users/grey/github/bigdata-i523/hid315/paper2/report.pdf  not found
+\phantomsection
+\addtocounter{section}{1}
+\addcontentsline{toc}{section}{\arabic{section}  hid318 \hfill Status: 0\% \newline Benchmarking a BigData Docker deployment \newline Gregor von Laszewski }
+% /Users/grey/github/bigdata-i523/hid318/paper2/report.pdf  not found
+\phantomsection
+\addtocounter{section}{1}
+\addcontentsline{toc}{section}{\arabic{section}  hid319 \hfill Status: Yet to start \newline Big data Analytics and effective decision making in Telecommunication industry \newline Mani Kumar Kagita }
+% /Users/grey/github/bigdata-i523/hid319/paper2/report.pdf  not found
+\phantomsection
+\addtocounter{section}{1}
+\addcontentsline{toc}{section}{\arabic{section}  hid320 \hfill Status: 0\% \newline This is my paper about Big Data Analytics and Applications in Sustainable Fish Breeding \newline Elena Kirzhner }
+% /Users/grey/github/bigdata-i523/hid320/paper2/report.pdf  not found
+\phantomsection
+\addtocounter{section}{1}
+\addcontentsline{toc}{section}{\arabic{section}  hid321 \hfill Status: unkown \newline Benchmarking a BigData Docker deployment \newline Gregor von Laszewski }
+% /Users/grey/github/bigdata-i523/hid321/paper2/report.pdf  not found
+\phantomsection
+\addtocounter{section}{1}
+\addcontentsline{toc}{section}{\arabic{section}  hid323 \hfill Status: unkown \newline None \newline Uma M Kugan }
+% /Users/grey/github/bigdata-i523/hid323/paper2/report.pdf  not found
+\phantomsection
+\addtocounter{section}{1}
+\addcontentsline{toc}{section}{\arabic{section}  hid324 \hfill Status: unkown \newline TBD \newline Ashok Kuppuraj }
+% /Users/grey/github/bigdata-i523/hid324/paper2/report.pdf  not found
+\phantomsection
+\addtocounter{section}{1}
+\addcontentsline{toc}{section}{\arabic{section}  hid325 \hfill Status: 0\% \newline This is my paper about data sharing \newline J. Robert Langlois }
+% /Users/grey/github/bigdata-i523/hid325/paper2/report.pdf  not found
+\phantomsection
+\addtocounter{section}{1}
+\addcontentsline{toc}{section}{\arabic{section}  hid326 \hfill Status: unkown \newline Benchmarking a BigData Docker deployment \newline Mohan Mahendrakar }
+% /Users/grey/github/bigdata-i523/hid326/paper2/report.pdf  not found
+\phantomsection
+\addtocounter{section}{1}
+\addcontentsline{toc}{section}{\arabic{section}  hid328 \hfill Status: not yet started \newline Big data analytics in data center network monitoring \newline Dhanya Mathew }
+% /Users/grey/github/bigdata-i523/hid328/paper2/report.pdf  not found
+\phantomsection
+\addtocounter{section}{1}
+\addcontentsline{toc}{section}{\arabic{section}  hid331 \hfill Status: 0\% \newline Big Data Applications in Using Neural Network for Medical Image Analysis \newline Tyler Peterson }
+% /Users/grey/github/bigdata-i523/hid331/paper2/report.pdf  not found
+\phantomsection
+\addtocounter{section}{1}
+\addcontentsline{toc}{section}{\arabic{section}  hid332 \hfill Status: In process \newline Big Data Analytics in Developing Countries \newline Judy Phillips }
+% /Users/grey/github/bigdata-i523/hid332/paper2/report.pdf  not found
+\phantomsection
+\addtocounter{section}{1}
+\addcontentsline{toc}{section}{\arabic{section}  hid333 \hfill Status: 0\% \newline Nartural language processing (NLP) for speech analysis and voice recognition \newline Anil Ravi, Ashok Reddy Singam }
+% /Users/grey/github/bigdata-i523/hid333/paper2/report.pdf  not found
+\phantomsection
+\addtocounter{section}{1}
+\addcontentsline{toc}{section}{\arabic{section}  hid334 \hfill Status: 0\% \newline Advancements in Drone Technology for the US Military \newline Peter Russell }
+% /Users/grey/github/bigdata-i523/hid334/paper2/report.pdf  not found
+\phantomsection
+\addtocounter{section}{1}
+\addcontentsline{toc}{section}{\arabic{section}  hid335 \hfill Status: 10\% \newline Big Health Data from Wearable Electronic Sensors (WES) and the Treatment of Opioid Addiction
+ \newline Sean M. Shiverick }
+\includepdf[pages=-,pagecommand=\thispagestyle{plain}]{/Users/grey/github/bigdata-i523/hid335/paper2/report.pdf}
+\phantomsection
+\addtocounter{section}{1}
+\addcontentsline{toc}{section}{\arabic{section}  hid337 \hfill Status: 0\% \newline Natural Language Processing (NLP) to analyze human speech data \newline Ashok Reddy Singam, Anil Ravi }
+\includepdf[pages=-,pagecommand=\thispagestyle{plain}]{/Users/grey/github/bigdata-i523/hid337/paper2/report.pdf}
+\phantomsection
+\addtocounter{section}{1}
+\addcontentsline{toc}{section}{\arabic{section}  hid338 \hfill Status: 0\% \newline Benchmarking a BigData Docker deployment \newline Gregor von Laszewski }
+% /Users/grey/github/bigdata-i523/hid338/paper2/report.pdf  not found
+\phantomsection
+\addtocounter{section}{1}
+\addcontentsline{toc}{section}{\arabic{section}  hid339 \hfill Status: 0\% \newline Benchmarking a BigData Docker deployment \newline Hady Sylla }
+% /Users/grey/github/bigdata-i523/hid339/paper2/report.pdf  not found
+\phantomsection
+\addtocounter{section}{1}
+\addcontentsline{toc}{section}{\arabic{section}  hid340 \hfill Status: 0\% \newline Big data on the blockchain? Distributed networks and large-scale analytics \newline Timothy A. Thompson }
+% /Users/grey/github/bigdata-i523/hid340/paper2/report.pdf  not found
+\phantomsection
+\addtocounter{section}{1}
+\addcontentsline{toc}{section}{\arabic{section}  hid341 \hfill Status: 0\% \newline This is my paper about the other abc \newline Tibenkana, Jacob }
+% /Users/grey/github/bigdata-i523/hid341/paper2/report.pdf  not found
+\phantomsection
+\addtocounter{section}{1}
+\addcontentsline{toc}{section}{\arabic{section}  hid342 \hfill Status: 0\% \newline Still under consideration \newline Udoyen, Nsikan }
+% /Users/grey/github/bigdata-i523/hid342/paper2/report.pdf  not found
+\phantomsection
+\addtocounter{section}{1}
+\addcontentsline{toc}{section}{\arabic{section}  hid343 \hfill Status: 0\% \newline None \newline Borga Edionse Usifo }
+% /Users/grey/github/bigdata-i523/hid343/paper2/report.pdf  not found
+\phantomsection
+\addtocounter{section}{1}
+\addcontentsline{toc}{section}{\arabic{section}  hid345 \hfill Status: unkown \newline Big Data Analytics and influence on althetics. \newline Ross Wood }
+% /Users/grey/github/bigdata-i523/hid345/paper2/report.pdf  not found
+\phantomsection
+\addtocounter{section}{1}
+\addcontentsline{toc}{section}{\arabic{section}  hid346 \hfill Status: unkown \newline This is my paper about the other abc \newline Gregor von Laszewski }
+% /Users/grey/github/bigdata-i523/hid346/paper2/report.pdf  not found
+\phantomsection
+\addtocounter{section}{1}
+\addcontentsline{toc}{section}{\arabic{section}  hid348 \hfill Status: 20\% \newline Something about NOSQL people DID NOT DO IN i524 Figure out a topic which is not covered need approval \newline Budhaditya Roy }
+% /Users/grey/github/bigdata-i523/hid348/paper2/report.pdf  not found
+\end{document}
