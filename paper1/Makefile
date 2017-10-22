@@ -28,8 +28,8 @@ clean:
 	rm *.toc *.aux *.log *.out
 
 publish:
-	cp proceedings.pdf  ~/github/laszewsk/laszewski.github.io/papers/vonLaszewski-i523.pdf
-	cd ~/github/laszewsk/laszewski.github.io/papers ; git commit -m "update vonLaszewski-i523.pdf" vonLaszewski-i523.pdf ; git push
+	cp proceedings.pdf  ~/github/laszewsk/laszewski.github.io/papers/vonLaszewski-i523-v1.pdf
+	cd ~/github/laszewsk/laszewski.github.io/papers ; git commit -m "update vonLaszewski-i523-v1.pdf" vonLaszewski-i523-v1.pdf ; git push
 
 pull:
 	cms proceedings pull
