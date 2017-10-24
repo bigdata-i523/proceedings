@@ -15,6 +15,7 @@ class ProceedingsCommand(PluginCommand):
         ::
 
           Usage:
+                proceedings git list
                 proceedings clone [git=BASE] [HIDS]
                 proceedings pull
                 proceedings push
@@ -29,7 +30,7 @@ class ProceedingsCommand(PluginCommand):
                 proceedings pdf HID KIND clean
                 proceedings pdf HID KIND ls
                 proceedings pdf HID KIND cat FILE
-                proceedings git list
+
 
           This command does some useful things.
 
