@@ -116,6 +116,15 @@ class Proceedings(object):
             print(hid)
             os.system("cd {home}/{hid}; git pull ".format(hid=hid, home=self.home))
 
+    def status(self, filename='list.txt'):
+        """does a git status in all hid dirs in .."""
+        """returns all hid the have an issue"""
+        hids = self.read_hid_list(filename=filename)
+        # print(hids)
+        for hid in hids:
+            print(hid)
+            os.system("cd {home}/{hid}; git status ".format(hid=hid, home=self.home))
+
     def commit(self, filename='list.txt', msg="update"):
         """does a git pull in all hid dirs in .."""
         """returns all hid the have an issue"""
