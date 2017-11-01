@@ -148,7 +148,7 @@ def get_paper(hid):
         print ("\\includepdf[pages=-,pagecommand=\\thispagestyle{plain}]{" + pdf + "}")
     else:
         print ("%", pdf, " not found")
-    if os.path.exists(pdf):
+    if os.path.exists(log):
         print ("\\VerbatimInput{" + log + "}")
     else:
         print ("%", log, " not found")
