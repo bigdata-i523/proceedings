@@ -1,6 +1,8 @@
-PAPER=paper2
+PAPER=`basename ${CURDIR}`
 DOCUMENT=proceedings
-
+LATEX=pydflatex
+PDFLATEX=pdflatex
+VOLUME=v2
 
 all: 
 	cms proceedings pdf all $(PAPER) make
@@ -8,9 +10,9 @@ all:
 
 proc: 
 	python $(PAPER).py > $(DOCUMENT).tex
-	pdflatex $(DOCUMENT)
-	pdflatex $(DOCUMENT)
-	pdflatex $(DOCUMENT)
+	$(LATEX) $(DOCUMENT) > tmp.log 2>&1
+	$(LATEX) $(DOCUMENT) >> tmp.log 2>&1
+	$(LATEX) $(DOCUMENT) >> tmp.log 2>&1
 
 compile:
 	python all.py
@@ -27,14 +29,14 @@ check:
 
 review:
 	python reviews.py > reviews.tex
-	pdflatex reviews
+	$(LATEX) reviews
 
 clean:
 	rm *.toc *.aux *.log *.out
 
 publish:
-	cp proceedings.pdf  ~/github/laszewsk/laszewski.github.io/papers/vonLaszewski-i523-v2.pdf
-	cd ~/github/laszewsk/laszewski.github.io/papers ; git commit -m "update vonLaszewski-i523-v2.pdf" vonLaszewski-i523-v2.pdf ; git push
+	cp proceedings.pdf  ~/github/laszewsk/laszewski.github.io/papers/vonLaszewski-i523-$(VOLUME).pdf
+	cd ~/github/laszewsk/laszewski.github.io/papers ; git commit -m "update vonLaszewski-i523-$(VOLUME).pdf" vonLaszewski-i523-$(VOLUME).pdf ; git push
 
 pull:
 	cms proceedings pull
