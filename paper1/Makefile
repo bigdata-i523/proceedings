@@ -1,6 +1,7 @@
-PAPER=paper1
+PAPER=`basename ${CURDIR}`
 DOCUMENT=proceedings
-
+LATEX=pydflatex
+PDFLATEX=pdflatex
 
 all: 
 	cms proceedings pdf all $(PAPER) make
@@ -8,9 +9,9 @@ all:
 
 proc: 
 	python $(PAPER).py > $(DOCUMENT).tex
-	pdflatex $(DOCUMENT)
-	pdflatex $(DOCUMENT)
-	pdflatex $(DOCUMENT)
+	$(LATEX) $(DOCUMENT) > tmp.log 2>&1
+	$(LATEX) $(DOCUMENT) >> tmp.log 2>&1
+	$(LATEX) $(DOCUMENT) >> tmp.log 2>&1
 
 compile:
 	python all.py
@@ -27,7 +28,7 @@ check:
 
 review:
 	python reviews.py > reviews.tex
-	pdflatex reviews
+	$(LATEX) reviews
 
 clean:
 	rm *.toc *.aux *.log *.out
