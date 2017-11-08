@@ -27,6 +27,8 @@ for readme in readmes:
     except Exception as e:
         print ("* [-]", readme)        
 
+'''
+        
 print('wrong quote (") found ')
 print("=====================")
 
@@ -40,4 +42,4 @@ for line in found:
     data[0] = data[0].replace("b'","")
     print ("*", data[0], "Line:", data[1])
 
-    
+'''    
