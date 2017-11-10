@@ -43,7 +43,7 @@ for hid in hids:
         d["name"] = ', '.join(d['author']) or None
         d["hid"] = ', '.join(str(x) for x in d["hid"])
     except Exception as e:
-        # print (e)
+        print (e)
         d["name"] = "error: yaml"
         d["hid"] = hid
     # print(d, file=sys.stderr)
