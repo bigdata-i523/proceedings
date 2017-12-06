@@ -198,14 +198,23 @@ class Proceedings(object):
             dirs = glob.glob('{home}/hid*'.format(home=self.home))
             for directory in dirs:
                 hid = directory.replace("{home}/".format(home=self.home), "")
-                # print(hid)
-                filename = directory + '/README.yml'
-                if os.path.isfile(filename):
-                    data = self.attribute(hid, name)
+                print(hid)
+                try:
+                    filename = directory + '/README.yml'
+                    if os.path.isfile(filename):
+                        data = self.attribute(hid, name)
+                        data['dir'] = hid
+                        #print(data)
+                        if data is None:
+                            missing.append("{hid}, owner data is missing in README.yml".format(hid=hid))
+                        else:
+                            ok[hid] = data
+                except:
                     data['dir'] = hid
-                    #print(data)
-                    if data is None:
-                        missing.append("{hid}, owner data is missing in README.yml".format(hid=hid))
-                    else:
-                        ok[hid] = data
+                    data['hid'] = 'None'
+                    data['type'] = 'None'
+                    data['chapter'] = 'None'
+                    data['author'] = 'None'
+                    data['title'] = 'None'
+
             return ok, missing
