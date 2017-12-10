@@ -5,6 +5,8 @@ from pprint import pprint
 import subprocess
 
 kind = 'paper1'
+with_log = False
+# with_log = True
 
 def read_file(filename):
     with open(filename) as f:
@@ -47,7 +49,8 @@ for hid in hids:
         d["name"] = "error: yaml"
         d["hid"] = hid
     # print(d, file=sys.stderr)
-    print ("{hid} & {name} & {title}  \\\\".format(**d))
+    if not 'exclude' in d:
+        print ("{hid} & {name} & {title}  \\\\".format(**d))
     print ("\\hline")
 
     
@@ -62,17 +65,19 @@ for hid in hids:
         data[hid] = p.attribute(hid, kind)
     except:
         data[hid] = None
-
+        data[hid]['exclude'] = True
+        
 # pprint(data)
 
 broken = []
 chapters = []
 for hid in hids:
-    if data[hid] is not None and 'chapter' in data[hid]:
+    if 'exclude' not in data[hid] and data[hid] is not None and 'chapter' in data[hid]:
         chapters.append(data[hid]['chapter'])
     elif data[hid] is not None:
         broken.append(hid)
-        data[hid]['chapter'] = 'TBD'
+        if 'exclude' not in data[hid]:
+            data[hid]['chapter'] = 'TBD'
 
 # print (broken)
 chapters = sorted(list(set(chapters)))
@@ -140,7 +145,8 @@ def get_paper(hid):
 
     print("\\addtocounter{section}{1}")
     print("\\addcontentsline{toc}{section}{\\arabic{section} ",
-          hid, '\\hfill', 'Status:', d["status"], "\\newline",
+#          hid, '\\hfill', 'Status:', d["status"], "\\newline",
+          hid, '\\hfill', "\\newline",          
           # d["chapter"], "\\newline",
           d["title"], "\\newline",
           d["author"], "}")
@@ -148,10 +154,11 @@ def get_paper(hid):
         print ("\\includepdf[pages=-,pagecommand=\\thispagestyle{plain}]{" + pdf + "}")
     else:
         print ("%", pdf, " not found")
-    if os.path.exists(log):
-        print ("\\VerbatimInput{" + log + "}")
-    else:
-        print ("%", log, " not found")
+    if with_log:
+        if os.path.exists(log):
+            print ("\\VerbatimInput{" + log + "}")
+        else:
+            print ("%", log, " not found")
 
 for chapter in order:
 
@@ -166,7 +173,7 @@ for chapter in order:
 
     for hid in hids:
         # print (hid)
-        if data[hid] is not None and data[hid]['chapter'] == chapter:
+        if 'exclude' not in data[hid] and data[hid] is not None and data[hid]['chapter'] == chapter:
             try:
                 get_paper(hid)
             except:
