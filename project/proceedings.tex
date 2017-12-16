@@ -1,0 +1,660 @@
+\documentclass[12pt]{book}
+\usepackage{fancyvrb}
+\usepackage{fullpage}
+\usepackage{datetime}
+\usepackage[final]{pdfpages}
+\usepackage{hyperref}
+\usepackage{tocloft}
+\renewcommand\cftsecafterpnum{\vskip0pt}
+\renewcommand\cftsubsecafterpnum{\vskip0pt}
+
+% Adjust sectional unit title fonts in ToC
+\renewcommand{\cftsecfont}{\sffamily}
+\renewcommand{\cftsubsecfont}{\sffamily}
+
+\usepackage{amsmath}
+\usepackage{tikz}
+\usepackage{epigraph}
+\usepackage{longtable}
+
+\renewcommand\epigraphflush{flushright}
+\renewcommand\epigraphsize{\normalsize}
+\setlength\epigraphwidth{0.7\textwidth}
+
+\definecolor{titlepagecolor}{cmyk}{1,.60,0,.40}
+
+\DeclareFixedFont{\titlefont}{T1}{ppl}{b}{it}{0.5in}
+
+\makeatletter                       
+\def\printauthor{%                  
+    {\large \@author}}              
+\makeatother
+\author{%
+    \today, \currenttime \\
+    \vspace{1cm}
+    Editor: \\
+    Gregor von Laszewski\\
+    Department of Intelligent Systems Engeneering\\
+    Indiana University \\
+    \texttt{laszewski@gmail.com}\vspace{20pt} \\   
+    }
+
+% The following code is borrowed from: http://tex.stackexchange.com/a/86310/10898
+
+\newcommand\titlepagedecoration{%
+\begin{tikzpicture}[remember picture,overlay,shorten >= -10pt]
+
+\coordinate (aux1) at ([yshift=-15pt]current page.north east);
+\coordinate (aux2) at ([yshift=-410pt]current page.north east);
+\coordinate (aux3) at ([xshift=-4.5cm]current page.north east);
+\coordinate (aux4) at ([yshift=-150pt]current page.north east);
+
+\begin{scope}[titlepagecolor!40,line width=12pt,rounded corners=12pt]
+\draw
+  (aux1) -- coordinate (a)
+  ++(225:5) --
+  ++(-45:5.1) coordinate (b);
+\draw[shorten <= -10pt]
+  (aux3) --
+  (a) --
+  (aux1);
+\draw[opacity=0.6,titlepagecolor,shorten <= -10pt]
+  (b) --
+  ++(225:2.2) --
+  ++(-45:2.2);
+\end{scope}
+\draw[titlepagecolor,line width=8pt,rounded corners=8pt,shorten <= -10pt]
+  (aux4) --
+  ++(225:0.8) --
+  ++(-45:0.8);
+\begin{scope}[titlepagecolor!70,line width=6pt,rounded corners=8pt]
+\draw[shorten <= -10pt]
+  (aux2) --
+  ++(225:3) coordinate[pos=0.45] (c) --
+  ++(-45:3.1);
+\draw
+  (aux2) --
+  (c) --
+  ++(135:2.5) --
+  ++(45:2.5) --
+  ++(-45:2.5) coordinate[pos=0.3] (d);   
+\draw 
+  (d) -- +(45:1);
+\end{scope}
+\end{tikzpicture}%
+}
+
+
+\textheight=23.5cm
+
+\begin{document}
+%\title{Big Data Technologies}
+
+%\author{Editor: Gregor von Laszewski}
+
+
+\begin{titlepage}
+
+\noindent
+\titlefont Use Cases in Big Data \\ Software and Analytics\par
+\epigraph{Vol. 3, Fall 2017}%
+{\textit{Bloomington, Indiana}}
+\null\vfill
+\vspace*{1cm}
+\noindent
+\hfill
+%begin{figure}
+%\includegraphics[width=.5\paperwidth]{images/wordcloud.pdf}
+%\end{figure}
+\begin{minipage}{0.50\linewidth}
+    \begin{flushright}
+        \printauthor
+    \end{flushright}
+\end{minipage}
+%
+\begin{minipage}{0.02\linewidth}
+    \rule{1pt}{125pt}
+\end{minipage}
+\titlepagedecoration
+\end{titlepage}
+
+
+
+%\maketitle
+
+
+
+
+\newpage
+\tableofcontents
+\newpage
+\chapter{Preface}
+\section{Disclaimer}
+
+The papers provided are contributed by students of the i523 class thought at Indiana University in Fall of 2017. The students were educated in plagiarizm and we hope that all papers meet the high standrads provided by the policies set at Indiana University in regrads to plagiarizm. In case you notice any issues, please contact Gregor von Laszewski (laszewski@gmail.com) so we cn address the issue with the student.
+
+\section{Citation}
+
+The proceedings is at this time available as a draft.
+To cite this proceedings you can use the following citation entry: 
+
+\begin{verbatim}
+
+@Book{las17-i523,
+  editor =    {Gregor von Laszewski},
+  title =        {Use Cases in Big Data Software and Analytics},
+  publisher =    {Indiana University},
+  year =         {2017},
+  volume =    {1},
+  series =    {i523},  
+  address =   {Bloomington, IN},
+  edition =   {1},
+  month =     dec,
+  url={https://github.com/laszewski/laszewski.github.io/raw/master/papers/vonLaszewski-i523.pdf}
+}
+
+\end{verbatim}
+
+Contributors to the volume can cite their contribution as
+follows. They just need to {\em FILLIN} the missing information
+
+\begin{verbatim}
+
+@InBook{las17-,
+  author =    {FILLIN},
+  editor =    {Gregor von Laszewski},
+  title =        {Use Cases in Big Data Software and Analytics},
+  chapter =      {FILLIN},
+  publisher =    {Indiana University},
+  year =         {2017},
+  volume =    {1},
+  series =    {i523},
+  address =   {Bloomington, IN},
+  edition =   {1},
+  month =     dec,
+  url={https://github.com/laszewski/laszewski.github.io/raw/master/papers/vonLaszewski-i523.pdf}
+  pages =     {FILLIN},
+}
+
+
+\end{verbatim}
+
+\section{List of Papers}
+
+\begin{footnotesize}
+\begin{longtable}{|p{1cm}p{5cm}p{9cm}|}
+\hline \textbf{HID} & \textbf{Author} & \textbf{Title} \\ \hline \hline
+
+101, 230 & Huiyi Chen, Yuanming Huang & Big Data in Job Recommendation Systems  \\
+\hline
+102 & Dianprakasa, Arif & TBD  \\
+\hline
+104, 216 & Jones, Gabriel, Millard, Mathew & Big Bias? An Analysis of Google Search Suggestions  \\
+\hline
+105 & Lipe-Melton, Josh & Predictive Model For English Premier League Games  \\
+\hline
+107 & Ni,Juan & Big Data Analytics in Support Filtering Wrong Informations On Social Networking Sites  \\
+\hline
+109, 106 & Shiqi Shen, Qiaoyi Liu & Diversification of Big Data  \\
+\hline
+201 & Arnav, Arnav & IoT Application Using MQTT and Raspberry Pi Robot Car  \\
+\hline
+202, 205 & Himani Bhatt, Mrunal Chaudhary & Big Data Analysis in E-Commerce  \\
+\hline
+209, 213, 214 & Han, Wenxuan, Liu, Yuchen, Lu, Junjie & Analysis of Digit Recognizer classification algorithms in big data  \\
+\hline
+211 & Khamkar, Ajinkya & Continuous motion tracking using Deep Neural Networks and Recurrent Neural Networks  \\
+\hline
+212, 225, 210 & Kumar, Saurabh; Schwartzer, Matthew; Hotz, Nicholas & Can Blockchain Adoption Mitigate the Opioid Crisis Through More Secure Drug Distribution?  \\
+\hline
+215, 208 & Mallala, Bharat, Jyothi Pranavi Devineni & Big Data Analytics on Influencers in Social Networks  \\
+\hline
+219 & Syam Sundar Herle & Unsupervised Learning for detecting fake online reviews  \\
+\hline
+224 & Rawat, Neha & Big Data Analytics in Detection of DDoS (Distributed Denial-of-Service) attacks
+  \\
+\hline
+228 & Swargam, Prashanth & Big data applications in Indian Premier League  \\
+\hline
+229 & ZhiCheng Zhu & Big Data Analytics in Product Development Management  \\
+\hline
+231, 203 & Vegi, Karthik, Chandwani, Nisha & Big Data Analytics on Food Products Around the World  \\
+\hline
+232 & Rahul Velayutham & Big Data and Hearing Disabilities  \\
+\hline
+233, 204 & Wang, Jiaan, Chaturvedi, Dhawal & Big Data in Safe Driver Prediction  \\
+\hline
+234 & Weixuan Wang & Big Data Analytics and Applications in the Travel Industry and its Potential in Improving Travel Accessibility
+  \\
+\hline
+235 & Yujie Wu & Big Data analytics in predict house price  \\
+\hline
+236, 218 & Weipeng Yang, Geng Niu & Big Data and Its Application in Education  \\
+\hline
+237 & Tousif Ahmed & Analyzing everyday challenges of people with visual impairments  \\
+\hline
+301 & Gagan Arora & Importance of Big data in predicting stock price 
+  \\
+\hline
+302 & Sushant Athaley & Recipe Ingredients Analysis  \\
+\hline
+304 & Ricky Alan Carmickle & How Far have Space Walks Walked  \\
+\hline
+hid305 & error: yaml & How Far have Space Walks Walked  \\
+\hline
+306, 338 & Murali Cheruvu, Anand Sriramulu & Predicting Housing Prices  \\
+\hline
+308 & Pravin Deshmukh & TBD  \\
+\hline
+hid309 & error: yaml & TBD  \\
+\hline
+310 & Kevin Duffy & Gerrymandering Detection Using Data Analysis  \\
+\hline
+311 & Matthew Durbin & Big Data in Genomics and Medicine  \\
+\hline
+312 & Neil Eliason & Big Data Mental Health Monitoring - A Private and Independent Approach
+  \\
+\hline
+313 & Tiffany Fabianac & The Impact of Clinical Trial Results on Pharmaceutical Stock Performance
+  \\
+\hline
+314 & Sarang Fadnavis & TBD  \\
+\hline
+315 & Garner, Jeffry & TBI - A Data Driven Journey Beyond Contact Sports... Putting Data In The Drivers Seat
+  \\
+\hline
+316 & Robert Gasiewicz & Big Data and Edge Analytics in Weather Monitoring and Forecasting  \\
+\hline
+318 & Irey, Ryan & None  \\
+\hline
+319 & Mani Kumar Kagita & Face Detection and Recognition Using Raspberry Pi Robot Car  \\
+\hline
+320 & Elena Kirzhner & Big Data Applications in Real Estate Analysis  \\
+\hline
+323 & Uma M Kugan & Plugin to cmd5 That Creates a Docker Swarm Cluster on 3 Raspberry Pis  \\
+\hline
+324 & Ashok Kuppuraj & Big Data Analytics in factors affecting Bitcoin  \\
+\hline
+325 & J. Robert Langlois & The importance of data sharing and replication, but what about data archiving?
+  \\
+\hline
+326 & Mohan Mahendrakar & None  \\
+\hline
+327 & Paul Marks & How Big Data Will Help Improve People's Health Worldwide  \\
+\hline
+328 & Dhanya Mathew & Predicting Profitable Customers in Banking Industry  \\
+\hline
+329 & Ashley Miller & Big Data and The Customer Experience Journey  \\
+\hline
+330 & Janaki Mudvari Khatiwada & Big Data Analytics in Monitoring Outdoor Air Quality  \\
+\hline
+331 & Tyler Peterson & Big Data Applications in Predicting Hospital Readmissions  \\
+\hline
+332 & Judy Phillips & Big Data Analytics to Reduce Health Care in the United States  \\
+\hline
+334 & Peter Russell & The Intersection of Big Data and IoT  \\
+\hline
+335 & Sean Shiverick & Using Machine Learning Classification of Opioid Addiction for Big Data Health Analytics
+  \\
+\hline
+336 & Jordan Simmons & None  \\
+\hline
+337, 333 & Ashok Reddy Singam, Anil Ravi & IoT and Big Data Analytics for Equipment Predictive Health Management (PHM)
+  \\
+\hline
+339 & Hady Sylla & Diagnosis of Coronary Artery Disease Using Big Data Analysis  \\
+\hline
+340 & Timothy A. Thompson & New Approaches to Managing Metadata at Scale in Research Libraries
+  \\
+\hline
+341 & Tibenkana, Jacob & Not submitted  \\
+\hline
+342 & Nsikan Udoyen & TBD  \\
+\hline
+343 & Borga Edionse Usifo & Income Prediction Using Machine Learning Techniques  \\
+\hline
+345 & Ross Wood & Agricultural Data Science  \\
+\hline
+346 & Zachary Meier & Big Data Analysis for Wild File Prevention and Tracking  \\
+\hline
+347 & Jeramy Townsley & Killings by Police in the United States  \\
+\hline
+348 & Budhaditya Roy & Big Data Application in Precision Medicine and Pharmacogenomicsn  \\
+\hline
+\end{longtable}
+\end{footnotesize}
+\newpage
+
+\phantomsection
+\addtocounter{chapter}{1}
+\addcontentsline{toc}{chapter}{\arabic{chapter}  Biology }
+\phantomsection
+\addtocounter{chapter}{1}
+\addcontentsline{toc}{chapter}{\arabic{chapter}  Business }
+\phantomsection
+\addtocounter{section}{1}
+\addcontentsline{toc}{section}{\arabic{section}  hid202 \hfill Status: Dec 04 17 100\% \newline Big Data Analysis in E-Commerce \newline Himani Bhatt, Mrunal Chaudhary }
+\includepdf[pages=-,pagecommand=\thispagestyle{plain}]{/Users/grey/github/bigdata-i523/hid202/project/report.pdf}
+\VerbatimInput{/Users/grey/github/bigdata-i523/hid202/project/report-latex.log}
+\phantomsection
+\addtocounter{section}{1}
+\addcontentsline{toc}{section}{\arabic{section}  hid229 \hfill Status: 100\%; 12/4/2017 \newline Big Data Analytics in Product Development Management \newline ZhiCheng Zhu }
+\includepdf[pages=-,pagecommand=\thispagestyle{plain}]{/Users/grey/github/bigdata-i523/hid229/project/report.pdf}
+\VerbatimInput{/Users/grey/github/bigdata-i523/hid229/project/report-latex.log}
+\phantomsection
+\addtocounter{section}{1}
+\addcontentsline{toc}{section}{\arabic{section}  hid233 \hfill Status: Dec 11 17 100\% \newline Big Data in Safe Driver Prediction \newline Wang, Jiaan, Chaturvedi, Dhawal }
+\includepdf[pages=-,pagecommand=\thispagestyle{plain}]{/Users/grey/github/bigdata-i523/hid233/project/report.pdf}
+\VerbatimInput{/Users/grey/github/bigdata-i523/hid233/project/report-latex.log}
+\phantomsection
+\addtocounter{section}{1}
+\addcontentsline{toc}{section}{\arabic{section}  hid234 \hfill Status: 100\% Dec 07 17 \newline Big Data Analytics and Applications in the Travel Industry and its Potential in Improving Travel Accessibility
+ \newline Weixuan Wang }
+\includepdf[pages=-,pagecommand=\thispagestyle{plain}]{/Users/grey/github/bigdata-i523/hid234/project/report.pdf}
+\VerbatimInput{/Users/grey/github/bigdata-i523/hid234/project/report-latex.log}
+\phantomsection
+\addtocounter{section}{1}
+\addcontentsline{toc}{section}{\arabic{section}  hid235 \hfill Status: unkown \newline Big Data analytics in predict house price \newline Yujie Wu }
+\includepdf[pages=-,pagecommand=\thispagestyle{plain}]{/Users/grey/github/bigdata-i523/hid235/project/report.pdf}
+\VerbatimInput{/Users/grey/github/bigdata-i523/hid235/project/report-latex.log}
+\phantomsection
+\addtocounter{section}{1}
+\addcontentsline{toc}{section}{\arabic{section}  hid301 \hfill Status: 100\% 12/2/2017 \newline Importance of Big data in predicting stock price 
+ \newline Gagan Arora }
+\includepdf[pages=-,pagecommand=\thispagestyle{plain}]{/Users/grey/github/bigdata-i523/hid301/project/report.pdf}
+\VerbatimInput{/Users/grey/github/bigdata-i523/hid301/project/report-latex.log}
+\phantomsection
+\addtocounter{section}{1}
+\addcontentsline{toc}{section}{\arabic{section}  hid306 \hfill Status: 100\%; 12/10/2017 \newline Predicting Housing Prices \newline Murali Cheruvu, Anand Sriramulu }
+\includepdf[pages=-,pagecommand=\thispagestyle{plain}]{/Users/grey/github/bigdata-i523/hid306/project/report.pdf}
+\VerbatimInput{/Users/grey/github/bigdata-i523/hid306/project/report-latex.log}
+\phantomsection
+\addtocounter{section}{1}
+\addcontentsline{toc}{section}{\arabic{section}  hid320 \hfill Status: 100\% Dec 03 2017 \newline Big Data Applications in Real Estate Analysis \newline Elena Kirzhner }
+\includepdf[pages=-,pagecommand=\thispagestyle{plain}]{/Users/grey/github/bigdata-i523/hid320/project/report.pdf}
+\VerbatimInput{/Users/grey/github/bigdata-i523/hid320/project/report-latex.log}
+\phantomsection
+\addtocounter{section}{1}
+\addcontentsline{toc}{section}{\arabic{section}  hid324 \hfill Status: Dec 04 17 100\% \newline Big Data Analytics in factors affecting Bitcoin \newline Ashok Kuppuraj }
+\includepdf[pages=-,pagecommand=\thispagestyle{plain}]{/Users/grey/github/bigdata-i523/hid324/project/report.pdf}
+\VerbatimInput{/Users/grey/github/bigdata-i523/hid324/project/report-latex.log}
+\phantomsection
+\addtocounter{section}{1}
+\addcontentsline{toc}{section}{\arabic{section}  hid328 \hfill Status: Dec 4 17 100\% \newline Predicting Profitable Customers in Banking Industry \newline Dhanya Mathew }
+\includepdf[pages=-,pagecommand=\thispagestyle{plain}]{/Users/grey/github/bigdata-i523/hid328/project/report.pdf}
+\VerbatimInput{/Users/grey/github/bigdata-i523/hid328/project/report-latex.log}
+\phantomsection
+\addtocounter{section}{1}
+\addcontentsline{toc}{section}{\arabic{section}  hid329 \hfill Status: 100\% Dec 4 \newline Big Data and The Customer Experience Journey \newline Ashley Miller }
+\includepdf[pages=-,pagecommand=\thispagestyle{plain}]{/Users/grey/github/bigdata-i523/hid329/project/report.pdf}
+\VerbatimInput{/Users/grey/github/bigdata-i523/hid329/project/report-latex.log}
+\phantomsection
+\addtocounter{chapter}{1}
+\addcontentsline{toc}{chapter}{\arabic{chapter}  Edge Computing }
+\phantomsection
+\addtocounter{section}{1}
+\addcontentsline{toc}{section}{\arabic{section}  hid201 \hfill Status: 100\% \newline IoT Application Using MQTT and Raspberry Pi Robot Car \newline Arnav, Arnav }
+\includepdf[pages=-,pagecommand=\thispagestyle{plain}]{/Users/grey/github/bigdata-i523/hid201/project/report.pdf}
+\VerbatimInput{/Users/grey/github/bigdata-i523/hid201/project/report-latex.log}
+\phantomsection
+\addtocounter{section}{1}
+\addcontentsline{toc}{section}{\arabic{section}  hid316 \hfill Status: 100\% \newline Big Data and Edge Analytics in Weather Monitoring and Forecasting \newline Robert Gasiewicz }
+\includepdf[pages=-,pagecommand=\thispagestyle{plain}]{/Users/grey/github/bigdata-i523/hid316/project/report.pdf}
+\VerbatimInput{/Users/grey/github/bigdata-i523/hid316/project/report-latex.log}
+\phantomsection
+\addtocounter{section}{1}
+\addcontentsline{toc}{section}{\arabic{section}  hid319 \hfill Status: 80\% \newline Face Detection and Recognition Using Raspberry Pi Robot Car \newline Mani Kumar Kagita }
+\includepdf[pages=-,pagecommand=\thispagestyle{plain}]{/Users/grey/github/bigdata-i523/hid319/project/report.pdf}
+\VerbatimInput{/Users/grey/github/bigdata-i523/hid319/project/report-latex.log}
+\phantomsection
+\addtocounter{section}{1}
+\addcontentsline{toc}{section}{\arabic{section}  hid334 \hfill Status: Dec 04 17 100\% \newline The Intersection of Big Data and IoT \newline Peter Russell }
+\includepdf[pages=-,pagecommand=\thispagestyle{plain}]{/Users/grey/github/bigdata-i523/hid334/project/report.pdf}
+\VerbatimInput{/Users/grey/github/bigdata-i523/hid334/project/report-latex.log}
+\phantomsection
+\addtocounter{chapter}{1}
+\addcontentsline{toc}{chapter}{\arabic{chapter}  Education }
+\phantomsection
+\addtocounter{section}{1}
+\addcontentsline{toc}{section}{\arabic{section}  hid236 \hfill Status: Dec 4 17 - 100\% \newline Big Data and Its Application in Education \newline Weipeng Yang, Geng Niu }
+\includepdf[pages=-,pagecommand=\thispagestyle{plain}]{/Users/grey/github/bigdata-i523/hid236/project/report.pdf}
+\VerbatimInput{/Users/grey/github/bigdata-i523/hid236/project/report-latex.log}
+\phantomsection
+\addtocounter{chapter}{1}
+\addcontentsline{toc}{chapter}{\arabic{chapter}  Energy }
+\phantomsection
+\addtocounter{chapter}{1}
+\addcontentsline{toc}{chapter}{\arabic{chapter}  Environment }
+\phantomsection
+\addtocounter{section}{1}
+\addcontentsline{toc}{section}{\arabic{section}  hid330 \hfill Status: 100\% \newline Big Data Analytics in Monitoring Outdoor Air Quality \newline Janaki Mudvari Khatiwada }
+\includepdf[pages=-,pagecommand=\thispagestyle{plain}]{/Users/grey/github/bigdata-i523/hid330/project/report.pdf}
+\VerbatimInput{/Users/grey/github/bigdata-i523/hid330/project/report-latex.log}
+\phantomsection
+\addtocounter{section}{1}
+\addcontentsline{toc}{section}{\arabic{section}  hid345 \hfill Status: 100\% \newline Agricultural Data Science \newline Ross Wood }
+\includepdf[pages=-,pagecommand=\thispagestyle{plain}]{/Users/grey/github/bigdata-i523/hid345/project/report.pdf}
+\VerbatimInput{/Users/grey/github/bigdata-i523/hid345/project/report-latex.log}
+\phantomsection
+\addtocounter{section}{1}
+\addcontentsline{toc}{section}{\arabic{section}  hid346 \hfill Status: Dec 08 17 100\% \newline Big Data Analysis for Wild File Prevention and Tracking \newline Zachary Meier }
+\includepdf[pages=-,pagecommand=\thispagestyle{plain}]{/Users/grey/github/bigdata-i523/hid346/project/report.pdf}
+\VerbatimInput{/Users/grey/github/bigdata-i523/hid346/project/report-latex.log}
+\phantomsection
+\addtocounter{chapter}{1}
+\addcontentsline{toc}{chapter}{\arabic{chapter}  Government }
+\phantomsection
+\addtocounter{section}{1}
+\addcontentsline{toc}{section}{\arabic{section}  hid310 \hfill Status: Dec 04 17 100\% \newline Gerrymandering Detection Using Data Analysis \newline Kevin Duffy }
+\includepdf[pages=-,pagecommand=\thispagestyle{plain}]{/Users/grey/github/bigdata-i523/hid310/project/report.pdf}
+\VerbatimInput{/Users/grey/github/bigdata-i523/hid310/project/report-latex.log}
+\phantomsection
+\addtocounter{chapter}{1}
+\addcontentsline{toc}{chapter}{\arabic{chapter}  Health }
+\phantomsection
+\addtocounter{section}{1}
+\addcontentsline{toc}{section}{\arabic{section}  hid212 \hfill Status: Dec 04 17 100\% \newline Can Blockchain Adoption Mitigate the Opioid Crisis Through More Secure Drug Distribution? \newline Kumar, Saurabh; Schwartzer, Matthew; Hotz, Nicholas }
+\includepdf[pages=-,pagecommand=\thispagestyle{plain}]{/Users/grey/github/bigdata-i523/hid212/project/report.pdf}
+% /Users/grey/github/bigdata-i523/hid212/project/report-latex.log  not found
+\phantomsection
+\addtocounter{section}{1}
+\addcontentsline{toc}{section}{\arabic{section}  hid232 \hfill Status: 100\% \newline Big Data and Hearing Disabilities \newline Rahul Velayutham }
+\includepdf[pages=-,pagecommand=\thispagestyle{plain}]{/Users/grey/github/bigdata-i523/hid232/project/report.pdf}
+\VerbatimInput{/Users/grey/github/bigdata-i523/hid232/project/report-latex.log}
+\phantomsection
+\addtocounter{section}{1}
+\addcontentsline{toc}{section}{\arabic{section}  hid237 \hfill Status: 100\%, Dec 7, 2017 \newline Analyzing everyday challenges of people with visual impairments \newline Tousif Ahmed }
+\includepdf[pages=-,pagecommand=\thispagestyle{plain}]{/Users/grey/github/bigdata-i523/hid237/project/report.pdf}
+\VerbatimInput{/Users/grey/github/bigdata-i523/hid237/project/report-latex.log}
+\phantomsection
+\addtocounter{section}{1}
+\addcontentsline{toc}{section}{\arabic{section}  hid311 \hfill Status: 100\% \newline Big Data in Genomics and Medicine \newline Matthew Durbin }
+\includepdf[pages=-,pagecommand=\thispagestyle{plain}]{/Users/grey/github/bigdata-i523/hid311/project/report.pdf}
+\VerbatimInput{/Users/grey/github/bigdata-i523/hid311/project/report-latex.log}
+\phantomsection
+\addtocounter{section}{1}
+\addcontentsline{toc}{section}{\arabic{section}  hid312 \hfill Status: 99\% \newline Big Data Mental Health Monitoring - A Private and Independent Approach
+ \newline Neil Eliason }
+\includepdf[pages=-,pagecommand=\thispagestyle{plain}]{/Users/grey/github/bigdata-i523/hid312/project/report.pdf}
+\VerbatimInput{/Users/grey/github/bigdata-i523/hid312/project/report-latex.log}
+\phantomsection
+\addtocounter{section}{1}
+\addcontentsline{toc}{section}{\arabic{section}  hid313 \hfill Status: 100\% \newline The Impact of Clinical Trial Results on Pharmaceutical Stock Performance
+ \newline Tiffany Fabianac }
+\includepdf[pages=-,pagecommand=\thispagestyle{plain}]{/Users/grey/github/bigdata-i523/hid313/project/report.pdf}
+\VerbatimInput{/Users/grey/github/bigdata-i523/hid313/project/report-latex.log}
+\phantomsection
+\addtocounter{section}{1}
+\addcontentsline{toc}{section}{\arabic{section}  hid327 \hfill Status: 100\%  12/05/17 \newline How Big Data Will Help Improve People's Health Worldwide \newline Paul Marks }
+\includepdf[pages=-,pagecommand=\thispagestyle{plain}]{/Users/grey/github/bigdata-i523/hid327/project/report.pdf}
+\VerbatimInput{/Users/grey/github/bigdata-i523/hid327/project/report-latex.log}
+\phantomsection
+\addtocounter{section}{1}
+\addcontentsline{toc}{section}{\arabic{section}  hid331 \hfill Status: Dec 4 17 100\% \newline Big Data Applications in Predicting Hospital Readmissions \newline Tyler Peterson }
+\includepdf[pages=-,pagecommand=\thispagestyle{plain}]{/Users/grey/github/bigdata-i523/hid331/project/report.pdf}
+\VerbatimInput{/Users/grey/github/bigdata-i523/hid331/project/report-latex.log}
+\phantomsection
+\addtocounter{section}{1}
+\addcontentsline{toc}{section}{\arabic{section}  hid332 \hfill Status: 100\% \newline Big Data Analytics to Reduce Health Care in the United States \newline Judy Phillips }
+\includepdf[pages=-,pagecommand=\thispagestyle{plain}]{/Users/grey/github/bigdata-i523/hid332/project/report.pdf}
+\VerbatimInput{/Users/grey/github/bigdata-i523/hid332/project/report-latex.log}
+\phantomsection
+\addtocounter{section}{1}
+\addcontentsline{toc}{section}{\arabic{section}  hid335 \hfill Status: 100\% \newline Using Machine Learning Classification of Opioid Addiction for Big Data Health Analytics
+ \newline Sean Shiverick }
+\includepdf[pages=-,pagecommand=\thispagestyle{plain}]{/Users/grey/github/bigdata-i523/hid335/project/report.pdf}
+\VerbatimInput{/Users/grey/github/bigdata-i523/hid335/project/report-latex.log}
+\phantomsection
+\addtocounter{section}{1}
+\addcontentsline{toc}{section}{\arabic{section}  hid337 \hfill Status: Dec 04 17 100\% \newline IoT and Big Data Analytics for Equipment Predictive Health Management (PHM)
+ \newline Ashok Reddy Singam, Anil Ravi }
+\includepdf[pages=-,pagecommand=\thispagestyle{plain}]{/Users/grey/github/bigdata-i523/hid337/project/report.pdf}
+\VerbatimInput{/Users/grey/github/bigdata-i523/hid337/project/report-latex.log}
+\phantomsection
+\addtocounter{section}{1}
+\addcontentsline{toc}{section}{\arabic{section}  hid348 \hfill Status: 100\% \newline Big Data Application in Precision Medicine and Pharmacogenomicsn \newline Budhaditya Roy }
+\includepdf[pages=-,pagecommand=\thispagestyle{plain}]{/Users/grey/github/bigdata-i523/hid348/project/report.pdf}
+\VerbatimInput{/Users/grey/github/bigdata-i523/hid348/project/report-latex.log}
+\phantomsection
+\addtocounter{chapter}{1}
+\addcontentsline{toc}{chapter}{\arabic{chapter}  Lifestyle }
+\phantomsection
+\addtocounter{section}{1}
+\addcontentsline{toc}{section}{\arabic{section}  hid109 \hfill Status: 100\% Dec 4th \newline Diversification of Big Data \newline Shiqi Shen, Qiaoyi Liu }
+\includepdf[pages=-,pagecommand=\thispagestyle{plain}]{/Users/grey/github/bigdata-i523/hid109/project/report.pdf}
+\VerbatimInput{/Users/grey/github/bigdata-i523/hid109/project/report-latex.log}
+\phantomsection
+\addtocounter{section}{1}
+\addcontentsline{toc}{section}{\arabic{section}  hid231 \hfill Status: 100\% Dec 4, 2017 \newline Big Data Analytics on Food Products Around the World \newline Vegi, Karthik, Chandwani, Nisha }
+\includepdf[pages=-,pagecommand=\thispagestyle{plain}]{/Users/grey/github/bigdata-i523/hid231/project/report.pdf}
+\VerbatimInput{/Users/grey/github/bigdata-i523/hid231/project/report-latex.log}
+\phantomsection
+\addtocounter{section}{1}
+\addcontentsline{toc}{section}{\arabic{section}  hid302 \hfill Status: 100\% \newline Recipe Ingredients Analysis \newline Sushant Athaley }
+\includepdf[pages=-,pagecommand=\thispagestyle{plain}]{/Users/grey/github/bigdata-i523/hid302/project/report.pdf}
+\VerbatimInput{/Users/grey/github/bigdata-i523/hid302/project/report-latex.log}
+\phantomsection
+\addtocounter{section}{1}
+\addcontentsline{toc}{section}{\arabic{section}  hid347 \hfill Status: Nov 29 17 100\% \newline Killings by Police in the United States \newline Jeramy Townsley }
+\includepdf[pages=-,pagecommand=\thispagestyle{plain}]{/Users/grey/github/bigdata-i523/hid347/project/report.pdf}
+\VerbatimInput{/Users/grey/github/bigdata-i523/hid347/project/report-latex.log}
+\phantomsection
+\addtocounter{chapter}{1}
+\addcontentsline{toc}{chapter}{\arabic{chapter}  Machine Learning }
+\phantomsection
+\addtocounter{section}{1}
+\addcontentsline{toc}{section}{\arabic{section}  hid209 \hfill Status: Dec 04 17 100\% \newline Analysis of Digit Recognizer classification algorithms in big data \newline Han, Wenxuan, Liu, Yuchen, Lu, Junjie }
+\includepdf[pages=-,pagecommand=\thispagestyle{plain}]{/Users/grey/github/bigdata-i523/hid209/project/report.pdf}
+\VerbatimInput{/Users/grey/github/bigdata-i523/hid209/project/report-latex.log}
+\phantomsection
+\addtocounter{section}{1}
+\addcontentsline{toc}{section}{\arabic{section}  hid343 \hfill Status: 100 \% \newline Income Prediction Using Machine Learning Techniques \newline Borga Edionse Usifo }
+\includepdf[pages=-,pagecommand=\thispagestyle{plain}]{/Users/grey/github/bigdata-i523/hid343/project/report.pdf}
+\VerbatimInput{/Users/grey/github/bigdata-i523/hid343/project/report-latex.log}
+\phantomsection
+\addtocounter{chapter}{1}
+\addcontentsline{toc}{chapter}{\arabic{chapter}  Media }
+\phantomsection
+\addtocounter{section}{1}
+\addcontentsline{toc}{section}{\arabic{section}  hid215 \hfill Status: Dec 04 17 100\% \newline Big Data Analytics on Influencers in Social Networks \newline Mallala, Bharat, Jyothi Pranavi Devineni }
+\includepdf[pages=-,pagecommand=\thispagestyle{plain}]{/Users/grey/github/bigdata-i523/hid215/project/report.pdf}
+\VerbatimInput{/Users/grey/github/bigdata-i523/hid215/project/report-latex.log}
+\phantomsection
+\addtocounter{section}{1}
+\addcontentsline{toc}{section}{\arabic{section}  hid340 \hfill Status: Dec 7 17 66\% \newline New Approaches to Managing Metadata at Scale in Research Libraries
+ \newline Timothy A. Thompson }
+\includepdf[pages=-,pagecommand=\thispagestyle{plain}]{/Users/grey/github/bigdata-i523/hid340/project/report.pdf}
+\VerbatimInput{/Users/grey/github/bigdata-i523/hid340/project/report-latex.log}
+\phantomsection
+\addtocounter{chapter}{1}
+\addcontentsline{toc}{chapter}{\arabic{chapter}  Physics }
+\phantomsection
+\addtocounter{section}{1}
+\addcontentsline{toc}{section}{\arabic{section}  hid304 \hfill Status: Dec 04 17 100\% \newline How Far have Space Walks Walked \newline Ricky Alan Carmickle }
+\includepdf[pages=-,pagecommand=\thispagestyle{plain}]{/Users/grey/github/bigdata-i523/hid304/project/report.pdf}
+\VerbatimInput{/Users/grey/github/bigdata-i523/hid304/project/report-latex.log}
+\phantomsection
+\addtocounter{chapter}{1}
+\addcontentsline{toc}{chapter}{\arabic{chapter}  Security }
+\phantomsection
+\addtocounter{section}{1}
+\addcontentsline{toc}{section}{\arabic{section}  hid224 \hfill Status: Dec 04 17 100\% \newline Big Data Analytics in Detection of DDoS (Distributed Denial-of-Service) attacks
+ \newline Rawat, Neha }
+\includepdf[pages=-,pagecommand=\thispagestyle{plain}]{/Users/grey/github/bigdata-i523/hid224/project/report.pdf}
+\VerbatimInput{/Users/grey/github/bigdata-i523/hid224/project/report-latex.log}
+\phantomsection
+\addtocounter{chapter}{1}
+\addcontentsline{toc}{chapter}{\arabic{chapter}  Sports }
+\phantomsection
+\addtocounter{section}{1}
+\addcontentsline{toc}{section}{\arabic{section}  hid105 \hfill Status: Dec 05 17 100\% \newline Predictive Model For English Premier League Games \newline Lipe-Melton, Josh }
+\includepdf[pages=-,pagecommand=\thispagestyle{plain}]{/Users/grey/github/bigdata-i523/hid105/project/report.pdf}
+\VerbatimInput{/Users/grey/github/bigdata-i523/hid105/project/report-latex.log}
+\phantomsection
+\addtocounter{section}{1}
+\addcontentsline{toc}{section}{\arabic{section}  hid228 \hfill Status: Dec 04 17  100\% \newline Big data applications in Indian Premier League \newline Swargam, Prashanth }
+\includepdf[pages=-,pagecommand=\thispagestyle{plain}]{/Users/grey/github/bigdata-i523/hid228/project/report.pdf}
+\VerbatimInput{/Users/grey/github/bigdata-i523/hid228/project/report-latex.log}
+\phantomsection
+\addtocounter{section}{1}
+\addcontentsline{toc}{section}{\arabic{section}  hid315 \hfill Status: 100\% \newline TBI - A Data Driven Journey Beyond Contact Sports... Putting Data In The Drivers Seat
+ \newline Garner, Jeffry }
+\includepdf[pages=-,pagecommand=\thispagestyle{plain}]{/Users/grey/github/bigdata-i523/hid315/project/report.pdf}
+\VerbatimInput{/Users/grey/github/bigdata-i523/hid315/project/report-latex.log}
+\phantomsection
+\addtocounter{chapter}{1}
+\addcontentsline{toc}{chapter}{\arabic{chapter}  Technology }
+\phantomsection
+\addtocounter{section}{1}
+\addcontentsline{toc}{section}{\arabic{section}  hid104 \hfill Status: 100\% \newline Big Bias? An Analysis of Google Search Suggestions \newline Jones, Gabriel, Millard, Mathew }
+\includepdf[pages=-,pagecommand=\thispagestyle{plain}]{/Users/grey/github/bigdata-i523/hid104/project/report.pdf}
+\VerbatimInput{/Users/grey/github/bigdata-i523/hid104/project/report-latex.log}
+\phantomsection
+\addtocounter{section}{1}
+\addcontentsline{toc}{section}{\arabic{section}  hid107 \hfill Status: Dec 08 0600 100\% \newline Big Data Analytics in Support Filtering Wrong Informations On Social Networking Sites \newline Ni,Juan }
+\includepdf[pages=-,pagecommand=\thispagestyle{plain}]{/Users/grey/github/bigdata-i523/hid107/project/report.pdf}
+\VerbatimInput{/Users/grey/github/bigdata-i523/hid107/project/report-latex.log}
+\phantomsection
+\addtocounter{section}{1}
+\addcontentsline{toc}{section}{\arabic{section}  hid308 \hfill Status: 0\% \newline TBD \newline Pravin Deshmukh }
+% /Users/grey/github/bigdata-i523/hid308/project/report.pdf  not found
+% /Users/grey/github/bigdata-i523/hid308/project/report-latex.log  not found
+\phantomsection
+\addtocounter{section}{1}
+\addcontentsline{toc}{section}{\arabic{section}  hid325 \hfill Status: 100\% \newline The importance of data sharing and replication, but what about data archiving?
+ \newline J. Robert Langlois }
+\includepdf[pages=-,pagecommand=\thispagestyle{plain}]{/Users/grey/github/bigdata-i523/hid325/project/report.pdf}
+\VerbatimInput{/Users/grey/github/bigdata-i523/hid325/project/report-latex.log}
+\phantomsection
+\addtocounter{chapter}{1}
+\addcontentsline{toc}{chapter}{\arabic{chapter}  Text }
+\phantomsection
+\addtocounter{chapter}{1}
+\addcontentsline{toc}{chapter}{\arabic{chapter}  Theory }
+\phantomsection
+\addtocounter{chapter}{1}
+\addcontentsline{toc}{chapter}{\arabic{chapter}  Transportation }
+\phantomsection
+\addtocounter{section}{1}
+\addcontentsline{toc}{section}{\arabic{section}  hid211 \hfill Status: Dec 5 2017 100\% \newline Continuous motion tracking using Deep Neural Networks and Recurrent Neural Networks \newline Khamkar, Ajinkya }
+\includepdf[pages=-,pagecommand=\thispagestyle{plain}]{/Users/grey/github/bigdata-i523/hid211/project/report.pdf}
+\VerbatimInput{/Users/grey/github/bigdata-i523/hid211/project/report-latex.log}
+\phantomsection
+\addtocounter{chapter}{1}
+\addcontentsline{toc}{chapter}{\arabic{chapter}  TBD }
+\phantomsection
+\addtocounter{section}{1}
+\addcontentsline{toc}{section}{\arabic{section}  hid323 \hfill Status: Dec 14 17 80\% \newline Plugin to cmd5 That Creates a Docker Swarm Cluster on 3 Raspberry Pis \newline Uma M Kugan }
+\includepdf[pages=-,pagecommand=\thispagestyle{plain}]{/Users/grey/github/bigdata-i523/hid323/project/report.pdf}
+\VerbatimInput{/Users/grey/github/bigdata-i523/hid323/project/report-latex.log}
+\phantomsection
+\addtocounter{section}{1}
+\addcontentsline{toc}{section}{\arabic{section}  hid326 \hfill Status: unkown \newline None \newline Mohan Mahendrakar }
+% /Users/grey/github/bigdata-i523/hid326/project/report.pdf  not found
+% /Users/grey/github/bigdata-i523/hid326/project/report-latex.log  not found
+\phantomsection
+\addtocounter{section}{1}
+\addcontentsline{toc}{section}{\arabic{section}  hid342 \hfill Status: 0\% \newline TBD \newline Nsikan Udoyen }
+% /Users/grey/github/bigdata-i523/hid342/project/report.pdf  not found
+% /Users/grey/github/bigdata-i523/hid342/project/report-latex.log  not found
+\end{document}
