@@ -83,16 +83,15 @@ class ProceedingsCommand(PluginCommand):
                 # print ("Owner Data Missing")
                 # print ("\n".join(missing))
             else:
-                print ("BBBB")
                 ok, missing = p.attribute(None, arguments.ATTRIBUTE)
                 #pprint (ok)
                 #pprint (missing)
                 if arguments.ATTRIBUTE == 'owner':
                     print(Printer.write(ok, order=['hid', 'name', 'url']))
                 elif arguments.ATTRIBUTE.startswith('paper'):
-                    print(Printer.write(ok, order=['dir', 'hid', 'type', 'chapter', 'author', 'title']))
+                    print(Printer.write(ok, order=['dir', 'hid', 'exclude', 'chapter', 'author', 'title']))
                 elif arguments.ATTRIBUTE.startswith('project'):
-                    print(Printer.write(ok, order=['dir', 'hid', 'type', 'chapter', 'author', 'title']))
+                    print(Printer.write(ok, order=['dir', 'hid', 'type', 'exclude', 'chapter', 'author', 'title']))
 
         elif arguments.pdf and arguments.make:
 
